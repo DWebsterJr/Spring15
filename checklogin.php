@@ -34,17 +34,11 @@ if(!$result){
 #$row = $result->fetch_array();
 $count = $db->affected_rows;
 
-if($count == 1){
-	//$_COOKIE["username"]= $username;
+if($count == 1){ /* //$_COOKIE["username"]= $username;
 	//$_COOKIE["password"] = $password;
 	//setcookie($username, $password);
-	header("location:success.php");
-}
-else{
-	echo "Wrong Username or Password";
-}
-?>
-
+	header("location:success.php");*/?>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,4 +46,23 @@ else{
 <meta content="utf-8" http-equiv="encoding">
 </head>
 
+<body>
+<tr>
+<td>&nbsp;</td>
+<form name="form1" method="post" action="index.php" accept-charset="UTF-8">
+<td><input name="username" type="hidden" value="<?php echo $username; ?>"></td>
+<td><input type="submit" name="Submit" value="Back to the main page"></td>
+</form></tr>
+
+</body>
 </html>
+<?php
+}
+else{
+	echo "Wrong Username or Password";
+}
+
+?>
+
+
+
