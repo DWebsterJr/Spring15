@@ -53,7 +53,7 @@ $username=$_POST['username'];
 <form>
 <tr>
 <td><input name="username" type="hidden" value="<?php echo $username; ?>"></td>
-<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="create_topic.php"><strong>Create New Topic</strong> </a></td>
+<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="create.php"><strong>Create New Topic</strong> </a></td>
 </tr>
 </form
 </table>
