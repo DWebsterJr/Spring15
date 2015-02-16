@@ -19,9 +19,9 @@ $username= mysql_real_escape_string($username);
 $password= mysql_real_escape_string($password);
 */
 
-$sql = "SELECT * FROM ".$tbl_name." WHERE `username` = '".$username."' AND `password` = '".$password."'";
+$sql = "SELECT * FROM `$tbl_name` WHERE `username` = '".$username."' AND `password` = '".$password."'";
 //$sql = "SELECT * FROM $tbl_name WHERE `username`=". $username ." and `password` = ".$password;
-echo $sql;
+//echo $sql;
 
 $result= $db->query($sql);
 
