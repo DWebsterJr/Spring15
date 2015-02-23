@@ -1,11 +1,13 @@
 <?php
-$host="localhost";
-$user="admin";
-$pw="5pR1nG20lS";
-$db_name="stack";
+
+session_start();
+include_once "creds.php";
+
+
 $tbl_name="question";
 $tbl_name2="user";
 $tbl_name3="answer";
+
 
 $db = new mysqli($host, $user,$pw,$db_name);// or die (mysql_error());
 //$username=$_POST['username'];
@@ -19,8 +21,9 @@ $rows=mysqli_fetch_array($result);
 <!DOCTYPE html>
 <head></head>
 <html>
+<td> <strong>Welcome, </strong> <?= $_SESSION['username']?> !(<a href="index.php?action=logout">log out</a>)</td>
 
-<td> <strong>Welcome, </strong> <?php echo $username ?></td>
+
 <table width="400" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
 
 <tr>
@@ -39,8 +42,33 @@ $rows=mysqli_fetch_array($result);
 
 </tr>
 <tr>
+<?php
+$name = "Anon";
+$number = $rows['u_id'];
 
-<td bgcolor="#F8F7F1"><strong>By :</strong> <?php echo $rows['u_id']; ?></td>
+$sqli="SELECT username FROM `$tbl_name2` WHERE `id`= $number";
+//echo $sqli;
+
+$res=$db->query($sqli);
+
+$row=mysqli_fetch_array($res);
+
+
+if (isset($row)){
+	$name=$row['username'];
+}
+
+if($number == 0)
+{
+	$name="Anon";
+}
+
+
+//echo $name;
+
+
+?>
+<td bgcolor="#F8F7F1"><strong>By :</strong> <?php echo $name; ?></td>
 
 </tr>
 
@@ -73,13 +101,36 @@ while($rows=mysqli_fetch_array($result2)){
 
 <tr>
 
+<?php
+
+$num = $rows['user_id'];
+$sqli2="SELECT username FROM `$tbl_name2` WHERE `id`= $num";;
+//echo $sqli;
+
+$ress=$db->query($sqli2);
+
+$roww=mysqli_fetch_array($ress);
+
+if (isset($ress)){
+$a_name=$roww['username'];
+}
+
+if($num == 0)
+{
+	$a_name="Anon";
+}
+
+
+?>
+
+
 <td bgcolor="#F8F7F1"><strong>Name</strong></td>
 
 <td bgcolor="#F8F7F1">:</td>
 
 <td bgcolor="#F8F7F1"><?php 
  
-	echo $rows['user_id']; ?></td>
+	echo $a_name; ?></td>
 
 </tr>
 <tr>

@@ -1,11 +1,24 @@
 <?php
 //SELECT * FROM `question` INNER JOIN `user` on question.u_id = user.id 
-$host="localhost";
-$user="admin";
-$pw="5pR1nG20lS";
-$db_name="stack";
+
+session_start();
+include_once "creds.php";
 $tbl_name="question";
 $tbl_name2="user";
+
+error_reporting(0);
+if($_GET['action'] && $_GET['action'] == "logout"){
+	unset($_SESSION['loggedIn']);
+	unset($_SESSION['username']);
+	unset($_SESSION['id']);
+}
+if (!$_SESSION['loggedIn']){
+
+
+	header("location: login.php");
+	die();
+}
+
 
 
 $db = new mysqli($host, $user,$pw,$db_name);// or die (mysql_error());
@@ -13,8 +26,8 @@ $db = new mysqli($host, $user,$pw,$db_name);// or die (mysql_error());
 $sql="SELECT * FROM  `$tbl_name` ORDER BY datetime DESC";
 
 $result=$db->query($sql);
-error_reporting(0);
-$username=$_POST['username'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +38,7 @@ $username=$_POST['username'];
 <meta content="utf-8" http-equiv="encoding">
 </head>
 <body>
-<h1><a href="login.php" target="_parent">Login</a></h1>
-	<td> <strong>Welcome, </strong> <?php echo $username ?></td>
+	<td> <strong>Welcome, </strong> <?= $_SESSION['username']?> !(<a href="index.php?action=logout">log out</a>)</td>
 
 <table width="90%" border="0" align="center" cellpadding="3" cellspacing"1" bgcolor="#CCCCCC">
 	<tr>

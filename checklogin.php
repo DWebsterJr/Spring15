@@ -1,11 +1,11 @@
 <?php
 
+session_start();
 
-$host="localhost";
-$user="admin";
-$pw="5pR1nG20lS";
-$db_name="stack";
-$tbl_name="user";
+include_once "creds.php";
+
+$tbl_name2="user";
+
 
 $db = new mysqli($host, $user,$pw,$db_name);// or die (mysql_error());
 //mysql_senew lect_db("$db_name") or die (mysql_error());
@@ -19,7 +19,7 @@ $username= mysql_real_escape_string($username);
 $password= mysql_real_escape_string($password);
 */
 
-$sql = "SELECT * FROM `$tbl_name` WHERE `username` = '".$username."' AND `password` = '".$password."'";
+$sql = "SELECT * FROM `$tbl_name2` WHERE `username` = '".$username."' AND `password` = '".$password."'";
 //$sql = "SELECT * FROM $tbl_name WHERE `username`=". $username ." and `password` = ".$password;
 //echo $sql;
 
@@ -34,7 +34,23 @@ if(!$result){
 #$row = $result->fetch_array();
 $count = $db->affected_rows;
 
-if($count == 1){ /* //$_COOKIE["username"]= $username;
+if($count == 1){ 
+	$_SESSION['username'] = $username;
+	$sql1="SELECT id FROM `$tbl_name` WHERE `username` = '".$username. "'";
+
+	//echo $sql1;
+	$result2=$db->query($sql1);
+	$row=mysqli_fetch_array($result2);
+	$id = $row['id'];
+	//echo $id;
+	$_SESSION['id'] = $id;
+	$_SESSION['loggedIn'] = True;
+
+	header("location:index.php");
+
+
+
+/* //$_COOKIE["username"]= $username;
 	//$_COOKIE["password"] = $password;
 	//setcookie($username, $password);
 	header("location:success.php");*/?>

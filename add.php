@@ -1,9 +1,9 @@
 <?php
+session_start();
 
-$host="localhost";
-$user="admin";
-$pw="5pR1nG20lS";
-$db_name="stack";
+
+include_once "creds.php";
+
 $tbl_name="question";
 $tbl_name2="user";
 
@@ -13,9 +13,14 @@ $db = new mysqli($host, $user,$pw,$db_name);// or die (mysql_error());
 
 //$id=$_GET['id'];
 
-$username = $_POST['username'];
+
 $topic=$_POST['topic'];
+$topic = addslashes($topic);
+
 $detail=$_POST['detail'];
+$detail = addslashes($detail);
+
+
 
 $datetime=date("d/m/y h:i:s");
 
@@ -26,10 +31,12 @@ $sql1="SELECT id FROM tbl_name2 WHERE `username` = '".$username."";
 $result1=$db->query($sql1);
 
 
+$userid=$_SESSION['id'];
 
 
 
-$sql="INSERT INTO `$tbl_name` (`topic`,`detail`, `datetime`)VALUES('$topic', '$detail', '$datetime')";
+
+$sql="INSERT INTO `$tbl_name` (`u_id`,`topic`,`detail`, `datetime`)VALUES('$userid', '$topic', '$detail', '$datetime')";
 $result=$db->query($sql);
 
 if($result){
