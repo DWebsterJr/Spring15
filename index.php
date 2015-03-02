@@ -20,12 +20,18 @@ if (!$_SESSION['loggedIn']){
 }
 
 
-
+ $uname = $_SESSION['username'];
 $db = new mysqli($host, $user,$pw,$db_name);// or die (mysql_error());
 
-$sql="SELECT * FROM  `$tbl_name` ORDER BY datetime DESC";
+$sql="SELECT * FROM  `$tbl_name` ORDER BY value DESC LIMIT 5";
+
+$sql1="SELECT id FROM `$tbl_name2` WHERE `username` =  '".$uname. "'";
 
 $result=$db->query($sql);
+
+$results=$db->query($sql1);
+
+$row=mysqli_fetch_array($results);
 
 
 ?>
@@ -33,12 +39,34 @@ $result=$db->query($sql);
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Milestone 1</title>
+	<title> Ask 4Gamers: an Ask site for gamers</title>
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
 </head>
 <body>
-	<td> <strong>Welcome, </strong> <?= $_SESSION['username']?> !(<a href="index.php?action=logout">log out</a>)</td>
+
+
+	<h1> Ask 4Gamers: an Ask site for gamers</h1>
+	<td> <strong>Welcome, </strong>
+	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a> !  
+<?php
+
+	$sqlpic ="SELECT picture FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
+
+	$respic = $db->query($sqlpic);
+	$rpic = mysqli_fetch_array($respic);
+
+	if($rpic['picture'] == "" ){
+		echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
+
+	}
+	else{
+		echo"<img width='50' height='50' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
+	}
+?>  
+
+	(<a href="index.php?action=logout">log out</a>)</td>
+	
 
 <table width="90%" border="0" align="center" cellpadding="3" cellspacing"1" bgcolor="#CCCCCC">
 	<tr>

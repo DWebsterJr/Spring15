@@ -16,12 +16,47 @@ $id=$_GET['id'];
 $sql="SELECT * FROM `$tbl_name` WHERE `q_id` = $id";
 $result=$db->query($sql) ;
 $rows=mysqli_fetch_array($result);
+
+
+$login = $_SESSION['username'];
+
 ?>
 
 <!DOCTYPE html>
-<head></head>
+<head>
+<title>Ask 4Gamers: an Ask site for gamers</title>
+</head>
 <html>
-<td> <strong>Welcome, </strong> <?= $_SESSION['username']?> !(<a href="index.php?action=logout">log out</a>)</td>
+<h1> A4G </h1>
+
+
+<?php
+	$uname = $_SESSION['username'];
+
+	$sql1="SELECT id FROM `$tbl_name2` WHERE `username` =  '".$uname. "'";
+
+	$result=$db->query($sql);
+
+	$results=$db->query($sql1);
+
+	$row=mysqli_fetch_array($results);
+
+	$sqlpic ="SELECT picture FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
+
+	//echo $sqlpic;
+
+	$respic = $db->query($sqlpic);
+	$rpic = mysqli_fetch_array($respic);
+
+	if($rpic['picture'] == "" ){
+		echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
+
+	}
+	else{
+		echo"<img width='50' height='50' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
+	}
+?>  
+<td> <strong>Welcome, </strong> <a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a> !  (<a href="index.php?action=logout">log out</a>)</td>
 
 
 <table width="400" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
@@ -68,7 +103,29 @@ if($number == 0)
 
 
 ?>
-<td bgcolor="#F8F7F1"><strong>By :</strong> <?php echo $name; ?></td>
+<td bgcolor="#F8F7F1"><strong>By :</strong> <a href="profile.php?id=<?php echo $rows['u_id']; ?>" ><?php echo $name; ?></a>
+
+<?php
+	
+	$sqlpicture = "SELECT picture FROM `$tbl_name2` WHERE `id` =$number";
+
+	//echo $sqlpicture; 
+
+	$picres=$db->query($sqlpicture);
+	$picrow=mysqli_fetch_array($picres);
+
+	if($picrow['picture'] == "" ){
+		echo "<img width='20' height = '20' src='Pictures/default.png' alt='Default Profile Pic'>";
+
+	}
+	else{
+		echo"<img width='20' height='20' src='Pictures/".$picrow['picture']."' alt=Profile Pic'>";
+	}
+?>  
+
+
+
+</td>
 
 </tr>
 
@@ -77,6 +134,8 @@ if($number == 0)
 <td bgcolor="#F8F7F1"><strong>Date/time : </strong><?php echo $rows['datetime']; ?></td>
 
 </tr>
+
+
 
 </table></td>
 
@@ -104,7 +163,7 @@ while($rows=mysqli_fetch_array($result2)){
 <?php
 
 $num = $rows['user_id'];
-$sqli2="SELECT username FROM `$tbl_name2` WHERE `id`= $num";;
+$sqli2="SELECT username FROM `$tbl_name2` WHERE `id`= $num";
 //echo $sqli;
 
 $ress=$db->query($sqli2);
@@ -130,7 +189,36 @@ if($num == 0)
 
 <td bgcolor="#F8F7F1"><?php 
  
-	echo $a_name; ?></td>
+	echo $a_name; ?>
+
+<?php
+	
+	$sqlpicture = "SELECT picture FROM `$tbl_name2` WHERE `id` =$num";
+
+	//echo $sqlpicture; 
+
+	$picres=$db->query($sqlpicture);
+	$picrow=mysqli_fetch_array($picres);
+
+	if($picrow['picture'] == "" ){
+		echo "<img width='20' height = '20' src='Pictures/default.png' alt='Default Profile Pic'>";
+
+	}
+	else{
+		echo"<img width='20' height='20' src='Pictures/".$picrow['picture']."' alt=Profile Pic'>";
+	}
+?>  
+
+
+
+
+
+
+
+
+
+
+</td>
 
 </tr>
 <tr>
@@ -150,11 +238,10 @@ if($num == 0)
 </table></td>
 </tr>
 <tr>
-<td bgcolor="#F8F7F1"><strong>Likes</strong></td>
-<td bgcolor="#F8F7F1"><?php echo $rows['likes']; ?></td>
-
-
+<td bgcolor="#F8F7F1"><strong>Votes</strong></td>
+<td bgcolor="#F8F7F1"><?php echo $rows['vote']; ?></td>
 </tr>
+
 </table></td>
 </tr>
 </table><br>

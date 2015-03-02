@@ -8,11 +8,12 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Create Topic</title>
+	<title>Ask 4Gamers: an Ask site for gamers</title>
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
 </head>
 <body>
+	<h1>A4G: Create a Topic </h1>
 	<td> <strong>Welcome, </strong> <?= $_SESSION['username']?> !(<a href="index.php?action=logout">log out</a>)</td>
 
 <table width="400" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
