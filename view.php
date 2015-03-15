@@ -1,5 +1,6 @@
 <?php
 
+
 session_start();
 include_once "creds.php";
 
@@ -23,12 +24,21 @@ $login = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
-<head>
-<title>Ask 4Gamers: an Ask site for gamers</title>
-</head>
 <html>
+<head>
+<meta charset="UTF-8" />
+<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="script.js"></script>
+
+<title>Ask 4Gamers: an Ask site for gamers</title>
+
+</head>
+
 <h1> A4G </h1>
 
+<body>
 
 <?php
 	$uname = $_SESSION['username'];
@@ -146,8 +156,9 @@ if($number == 0)
 <BR>
 	<?php
 
-$sql2="SELECT * FROM `$tbl_name3` WHERE `question_id` = $id";
+$sql2="SELECT * FROM `$tbl_name3` WHERE `question_id` = $id  ORDER BY `like` DESC "; 
 
+//echo $sql2; 
 $result2=$db->query($sql2);
 while($rows=mysqli_fetch_array($result2)){
 
@@ -163,7 +174,7 @@ while($rows=mysqli_fetch_array($result2)){
 <?php
 
 $num = $rows['user_id'];
-$sqli2="SELECT username FROM `$tbl_name2` WHERE `id`= $num";
+$sqli2="SELECT * FROM `$tbl_name2` WHERE `id`= $num";
 //echo $sqli;
 
 $ress=$db->query($sqli2);
@@ -180,6 +191,7 @@ if($num == 0)
 }
 
 
+
 ?>
 
 
@@ -187,9 +199,8 @@ if($num == 0)
 
 <td bgcolor="#F8F7F1">:</td>
 
-<td bgcolor="#F8F7F1"><?php 
- 
-	echo $a_name; ?>
+
+<td bgcolor="#F8F7F1"><a href="profile.php?id=<?php echo $roww['id']; ?>"> <?php echo $a_name; ?> </a>
 
 <?php
 	
@@ -221,6 +232,7 @@ if($num == 0)
 </td>
 
 </tr>
+<form method="post"id="like_form" action="like.php">
 <tr>
 
 <td bgcolor="#F8F7F1"><strong>Answer</strong></td>
@@ -237,16 +249,58 @@ if($num == 0)
 </tr>
 </table></td>
 </tr>
+<div class="item" data-postid="<?php echo $rows['a_id']; ?>" data-score="<?php echo $rows['vote']; ?>">
+<div class = "vote-span">
+	<div class="vote" data-action="up" title="Vote up">
+		<i class = "icon-chevron-up"></i>
+	</div><!--vote up -->
+	<div class="vote-score"><?php echo $rows['vote']; ?></div>
+	<div class="vote" data-action="down" title="Vote down">
+		<i class="icon-chevron-down"></i>
+	</div><!-- vote down -->
+</div><!-- voting -->
+</div><!-- item -->
+
+
+
+
+<?php
+$like = $rows['a_id'];
+if($_SESSION['username'] == $name && $rows['like'] == 0){ ?>
+
 <tr>
-<td bgcolor="#F8F7F1"><strong>Votes</strong></td>
-<td bgcolor="#F8F7F1"><?php echo $rows['vote']; ?></td>
+
+<td><input name="like" form="like_form" type="hidden" value="<?php echo $like; ?>"></td>
+<input name="id" form="like_form" type="hidden" value="<?php echo $id; ?>"></td>
+<input type="submit" form="like_form" value="Like this Answer?">
+
 </tr>
+
+<?php	
+}
+if($rows['like'] == 1){ ?>
+
+<tr>
+<td bgcolor="#33fa57"><?php echo $name; ?> liked this answer</td>
+
+
+</tr>
+
+<?php
+
+}
+
+?>
+
 
 </table></td>
 </tr>
-</table><br>
+</table><br></form>
 <?php
 }
+
+
+
 $sql3="SELECT view FROM `$tbl_name` WHERE `q_id`= $id";
 
 $result3=$db->query($sql3);
@@ -272,6 +326,20 @@ $addview=$view+1;
 $sql5="UPDATE `$tbl_name` SET `view`= $addview WHERE `q_id`= $id";
 
 $result5=$db->query($sql5);
+
+
+$votesql = "SELECT vote FROM `$tbl_name3` WHERE `question_id` = $id";
+
+$resv=$db->query($votesql);
+$v=0;
+while($rowv=mysqli_fetch_array($resv)){
+	$v +=$rowv['vote'];
+}
+
+$sql6="UPDATE `$tbl_name` SET `value` = $v WHERE `q_id` = $id";
+
+$result6=$db->query($sql6);
+
 
 ?>
 
@@ -301,6 +369,13 @@ $result5=$db->query($sql5);
 </form>
 </tr>
 </table>
+</body>
 
 
 </html>
+
+
+
+
+
+

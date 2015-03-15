@@ -23,7 +23,14 @@ if (!$_SESSION['loggedIn']){
  $uname = $_SESSION['username'];
 $db = new mysqli($host, $user,$pw,$db_name);// or die (mysql_error());
 
+
+
+
+
+
 $sql="SELECT * FROM  `$tbl_name` ORDER BY value DESC LIMIT 5";
+
+
 
 $sql1="SELECT id FROM `$tbl_name2` WHERE `username` =  '".$uname. "'";
 
@@ -42,6 +49,8 @@ $row=mysqli_fetch_array($results);
 	<title> Ask 4Gamers: an Ask site for gamers</title>
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
+<link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
 
@@ -75,6 +84,7 @@ $row=mysqli_fetch_array($results);
 		<td width="15%" align="center" bgcolor="#E6E6E6"><strong>Views</strong></td>
 		<td width="13%" align="center" bgcolor="#E6E6E6"><strong>Replies</strong></td>
 		<td width="13%" align="center" bgcolor="#E6E6E6"><strong>Date/Time</strong></td>
+		<td width="13%" align="center" bgcolor="#E6E6E6"><strong>Vote</strong></td>
 	</tr>
 	<?php
 	while($rows=mysqli_fetch_array($result)){
@@ -86,6 +96,7 @@ $row=mysqli_fetch_array($results);
 			<td align="center" bgcolor="#FFFFFF"><?php echo $rows['view']; ?></td>
 			<td align="center" bgcolor="#FFFFFF"><?php echo $rows['reply']; ?></td>
 			<td align="center" bgcolor="#FFFFFF"><?php echo $rows['datetime']; ?></td>
+			<td align="center" bgcolor="#FFFFFF"><?php echo $rows['value']; ?> </td>
 		</tr>
 		<?php
 	}

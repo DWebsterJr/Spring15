@@ -38,9 +38,15 @@ if(isset($_POST['submit'])){
 <!DOCTYPE html>
 <head>
 <title> Ask 4Gamers: an Ask site for gamers</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <html>
+
+
 <h1> A4G: Profile </h1><a href=index.php>Main page</a>
+
+<body>
 <BR>
 
 <?php
@@ -98,7 +104,7 @@ if( $roname['username'] == $_SESSION['username']){
 
 <form action = "" method="post" enctype="multipart/form-data">
 	<input type = "file" name="file">
-	<input type="submit" name="submit">
+	<input type="submit" name="submit" value="Upload">
 	<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="create.php"><strong>Create New Topic</strong> </a></td>
 </form>
 
@@ -147,6 +153,8 @@ if( $roname['username'] == $_SESSION['username']){
 		<?php
 	}
 ?>
+
+</body>
 
 
 
