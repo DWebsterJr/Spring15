@@ -11,6 +11,21 @@ $tbl_name3="answer";
 $db = new mysqli($host, $user,$pw,$db_name);// or die (mysql_error());
 
 $id=$_POST['id'];
+$usern = $_POST['user'];
+//echo $id;
+//echo $usern;
+
+
+$sqlid= "SELECT id FROM `$tbl_name2` WHERE `username` = '".$usern. "'";
+
+//echo $sqlid;
+
+$nameres = $db->query($sqlid);
+$rowname=mysqli_fetch_array($nameres);
+
+$userid = $rowname['id'];
+
+//echo $userid;
 
 $sql="SELECT reply FROM `$tbl_name` WHERE `q_id`=$id";
 $result= $db->query($sql);
@@ -39,10 +54,12 @@ $datetime=date("d/m/y H:i:s"); // create date and time
 
 $u_id = $_SESSION['id'];
 
+echo $u_id;
+
 //echo $uid;
 
 
-$sql2="INSERT INTO `$tbl_name3`(`user_id`,`question_id`, `a_answer`, `a_datetime`)VALUES('$u_id', '$id', '$a_answer', '$datetime')";
+$sql2="INSERT INTO `$tbl_name3`(`user_id`,`question_id`, `a_answer`, `a_datetime`)VALUES('$userid', '$id', '$a_answer', '$datetime')";
 
 //echo $sql2;
 

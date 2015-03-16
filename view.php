@@ -370,7 +370,9 @@ $repss=$db->query($sqlr);
 </tr>
 <tr>
 <td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><input name="id" type="hidden" value="<?php echo $id; ?>"></td>
+<td><input name ="user" type="hidden" value="<?php echo $login; ?>"></td>
 <td><input type="submit" name="Submit" value="Submit"> <input type="reset" name="Submit2" value="Reset"></td>
 </tr>
 
