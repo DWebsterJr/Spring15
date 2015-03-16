@@ -138,6 +138,7 @@ if( $roname['username'] == $_SESSION['username']){
 		<td width="15%" align="center" bgcolor="#E6E6E6"><strong>Views</strong></td>
 		<td width="13%" align="center" bgcolor="#E6E6E6"><strong>Replies</strong></td>
 		<td width="13%" align="center" bgcolor="#E6E6E6"><strong>Date/Time</strong></td>
+		<td width="13%" align="center" bgcolor="#E6E6E6"><strong>Vote</strong></td>
 	</tr>
 	<?php
 	while($rows=mysqli_fetch_array($result)){
@@ -149,6 +150,7 @@ if( $roname['username'] == $_SESSION['username']){
 			<td align="center" bgcolor="#FFFFFF"><?php echo $rows['view']; ?></td>
 			<td align="center" bgcolor="#FFFFFF"><?php echo $rows['reply']; ?></td>
 			<td align="center" bgcolor="#FFFFFF"><?php echo $rows['datetime']; ?></td>
+			<td align="center" bgcolor="#FFFFFF"><?php echo $rows['value']; ?> </td>
 		</tr>
 		<?php
 	}

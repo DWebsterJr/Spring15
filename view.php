@@ -156,7 +156,7 @@ if($number == 0)
 <BR>
 	<?php
 
-$sql2="SELECT * FROM `$tbl_name3` WHERE `question_id` = $id  ORDER BY `like` DESC "; 
+$sql2="SELECT * FROM `$tbl_name3` WHERE `question_id` = $id  ORDER BY `like` DESC, `vote` DESC"; 
 
 //echo $sql2; 
 $result2=$db->query($sql2);
