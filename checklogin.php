@@ -53,6 +53,7 @@ if($count == 1){
 	$_SESSION['loggedIn'] = True;
 
 	header("location:index.php");
+	die();
 
 
 
@@ -84,7 +85,10 @@ else{
 	echo "Wrong Username or Password";
 
 	header("location:login.php");
+
 }
+
+die();
 
 ?>
 

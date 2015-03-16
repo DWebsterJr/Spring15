@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2015 at 03:04 PM
+-- Generation Time: Mar 16, 2015 at 03:36 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -90,11 +90,11 @@ CREATE TABLE IF NOT EXISTS `question` (
 --
 
 INSERT INTO `question` (`u_id`, `q_id`, `topic`, `detail`, `datetime`, `view`, `reply`, `value`) VALUES
-(1, 3, 'Favorite Genre', 'What is your favorite Video Game genre?', '2015-03-16 13:35:27', 102, 9, 25),
-(7, 1, 'What is your favorite console', 'What is your favorite console of all time?', '2015-03-15 19:29:33', 39, 2, 22),
+(1, 3, 'Favorite Genre', 'What is your favorite Video Game genre?', '2015-03-16 14:29:24', 104, 9, 25),
+(7, 1, 'What is your favorite console', 'What is your favorite console of all time?', '2015-03-16 14:07:58', 40, 9, 22),
 (2, 2, 'Help. Stuck on a level?', 'I need help', '2015-03-15 19:17:08', 2, 0, 0),
 (7, 4, 'Favorite game', 'What is your favorite game of all time?', '2015-02-28 15:52:26', 2, 0, 0),
-(16, 19, 'Favorite video game character', 'Who is your favorite video game character?Mine is Mario.', '2015-03-16 12:45:03', 5, 0, 0),
+(16, 19, 'Favorite video game character', 'Who is your favorite video game character?Mine is Mario.', '2015-03-16 14:34:10', 6, 5, 0),
 (16, 17, 'Weird glitch that happen to me', 'What was weirdest glitch to happen to you during a game?', '2015-02-28 15:53:48', 0, 0, 0),
 (1, 8, 'New games this month', 'What games are coming out this month and are they any good?', '2015-03-15 19:20:35', 8, 1, -50),
 (16, 9, 'Playstation 4 or Xbox One or WiiU?', 'Which one is your favorite console?', '2015-02-25 18:45:43', 0, 0, 0);
