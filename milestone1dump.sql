@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `stack`
 --
-CREATE DATABASE IF NOT EXISTS `stack` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `stack` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `stack`;
 
 -- --------------------------------------------------------
