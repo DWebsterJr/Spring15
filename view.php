@@ -341,6 +341,19 @@ $sql6="UPDATE `$tbl_name` SET `value` = $v WHERE `q_id` = $id";
 $result6=$db->query($sql6);
 
 
+$repsql = "SELECT * FROM `$tbl_name3` WHERE `question_id` = $id";
+
+$resrep=$db->query($repsql);
+$rep=0;
+while($rowrep=mysqli_fetch_array($resrep)){
+	$rep ++;
+}
+
+$sqlr="UPDATE `$tbl_name` SET `reply` = $rep WHERE `q_id` = $id";
+
+$repss=$db->query($sqlr);
+
+
 ?>
 
 

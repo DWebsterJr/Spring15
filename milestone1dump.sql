@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2015 at 02:19 PM
+-- Generation Time: Mar 16, 2015 at 03:04 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `question` (
 --
 
 INSERT INTO `question` (`u_id`, `q_id`, `topic`, `detail`, `datetime`, `view`, `reply`, `value`) VALUES
-(1, 3, 'Favorite Genre', 'What is your favorite Video Game genre?', '2015-03-15 19:50:50', 99, 1, 25),
+(1, 3, 'Favorite Genre', 'What is your favorite Video Game genre?', '2015-03-16 13:35:27', 102, 9, 25),
 (7, 1, 'What is your favorite console', 'What is your favorite console of all time?', '2015-03-15 19:29:33', 39, 2, 22),
 (2, 2, 'Help. Stuck on a level?', 'I need help', '2015-03-15 19:17:08', 2, 0, 0),
 (7, 4, 'Favorite game', 'What is your favorite game of all time?', '2015-02-28 15:52:26', 2, 0, 0),

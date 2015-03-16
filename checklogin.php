@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 include_once "creds.php";
 
@@ -12,6 +11,10 @@ $db = new mysqli($host, $user,$pw,$db_name);// or die (mysql_error());
 
 $username=$_POST['username'];
 $password=$_POST['password'];
+
+
+$username = addslashes($username);
+$password = addslashes($password);
 /*
 $username = stripslashes($username);
 $password = stripslashes($password);
@@ -35,6 +38,9 @@ if(!$result){
 $count = $db->affected_rows;
 
 if($count == 1){ 
+
+	session_start();
+
 	$_SESSION['username'] = $username;
 	$sql1="SELECT id FROM `$tbl_name` WHERE `username` = '".$username. "'";
 
