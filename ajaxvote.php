@@ -30,9 +30,12 @@ $vrow = mysql_fetch_array($vresult);
 
 $vote = $vrow['vote'];
 
-	if($_POST['action'] == 'up'){
-		$vote = $vote +1;
+	if($_POST['action'] === 'up'){
+		$vote = $vote+1;
 
+	}
+	else if ($_POST['action'] === 'down'){
+		$vote = $vote-1;
 	}
 
 
@@ -42,13 +45,8 @@ $sqlupdate = "UPDATE `$tbl_name3` SET `vote` = $vote WHERE `a_id` = $postId ";
 	$updateres = $db->query($sqlupdate);
 
 	$_SESSION['vote'][$postId] = true;
-	
-
-	
 
 
+}
 
-
-
-
-?>
+	?>

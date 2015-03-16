@@ -333,7 +333,7 @@ $votesql = "SELECT vote FROM `$tbl_name3` WHERE `question_id` = $id";
 $resv=$db->query($votesql);
 $v=0;
 while($rowv=mysqli_fetch_array($resv)){
-	$v +=$rowv['vote'];
+	$v +=($rowv['vote']);
 }
 
 $sql6="UPDATE `$tbl_name` SET `value` = $v WHERE `q_id` = $id";
