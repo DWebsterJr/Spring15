@@ -13,6 +13,7 @@ $(document).ready(function() {
         var parent = self.parent().parent(); // grab grand paret .item
         var postid = parent.data('postid'); //grab post id from data-postid
         var score = parent.data('score'); // grab score from data-score
+        var user = parent.data('user'); //grab user id from data-user
 
         //only works where is no disabled class
 
@@ -31,7 +32,8 @@ $(document).ready(function() {
                 $.ajax({
                     data: {
                         'postid': postid,
-                        'action': 'up'
+                        'action': 'up',
+                        'user' : user
                     }
                 });
             } else if (action == 'down') {
@@ -47,7 +49,8 @@ $(document).ready(function() {
                 $.ajax({
                     data: {
                         'postid': postid,
-                        'action': 'down'
+                        'action': 'down',
+                        'user': user
                     }
                 });
             };

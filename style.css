@@ -18,10 +18,257 @@
 .vote-score{cursor: text;}
 
 body{
-	background-color: #FFFFCC;
+	background-color: palegoldenrod;
+	background-image: url(star_wallpaper.jpg);
 }
 
 h1{
 
-	color: : #3333CC;
+	
+	color: palegoldenrod;
+
+  	
 }
+
+h2{
+	color: gold;
+}
+.user{
+	font-weight: bold;
+	font-family: Arial;
+	
+	background-color: palegoldenrod;
+	font-variant: small-caps;
+
+	
+}
+.user a:hover{
+	color: black;
+	font-weight: normal;
+	
+}
+
+.table{
+	display: table;
+	border-collapse: collapse;
+	width: 100%;
+	height: 100%;
+	background-color: palegoldenrod;
+	border: 1px solid black;
+	border-spacing: 0;
+	border-radius: 5px;
+	margin:0px; 
+	padding: 0px;
+	box-shadow: 10px 10px 5px #888888;
+
+
+}
+
+.create{
+
+color: black;
+font-weight: bold;
+
+}
+.create a:hover{
+	color: black;
+	font-size:110%;
+	
+	
+}
+
+
+.heading{
+display: table-row;
+background-color: #4C0000;
+width: auto;
+font-weight: bold;
+text-align: center;
+color: white;
+
+}
+.rows{
+	display: table-row;
+
+}
+
+.cell{
+display: table-cell;
+border: none;
+border-width: thin;
+width: auto;
+height: 0px;
+padding-left: 0px;
+padding-right: 0px;
+text-align: center;
+
+
+}
+
+
+.login{
+	display: table;
+	border-collapse: collapse;
+	width: 80%;
+	height: 50%;
+	background-color: palegoldenrod;
+	border: 1px solid green;
+	border-spacing: 5px;
+	border-radius: 5px;
+	margin:50px; 
+	padding: 50px;
+	box-shadow: 10px 10px 5px #888888;
+	font-weight: bold;
+
+}
+
+
+.olduser{
+display: table;
+
+
+
+
+}
+
+.newuser{
+display: table;
+
+}
+
+
+.viewcell{
+display: table-cell;
+border: solid;
+border-width: thin;
+width: 1500px;
+padding-left: 5px;
+padding-right: 5px;
+text-align: center;
+
+}
+.like{
+	color: green;
+	
+
+}
+
+.likecell{
+display: table-cell;
+border: none;
+border-width: thin;
+
+padding-left: 550px;
+padding-right: 0px;
+text-align: center;
+
+
+
+}
+.admin{
+	color:red;
+	font-weight: bold;
+}
+
+.tableanswer{
+	display: table;
+	border-collapse: collapse;
+	width: 100%;
+	height: auto;
+	background-color: palegoldenrod;
+	border: 1px solid black;
+	border-spacing: 0;
+	border-radius: 5px;
+	margin:0px; 
+	padding: 0px;
+	box-shadow: 10px 10px 5px #888888;
+
+
+}
+.vcell{
+display: table-cell;
+border: solid;
+border-width: thin;
+width: 1500px;
+height: 0px;
+padding-left: 0px;
+padding-right: 0px;
+text-align: center;
+
+
+}
+.tagcell{
+display: table-cell;
+border:none;
+border-width: thin;
+height: 15px;
+width: auto;
+padding-left: 5px;
+padding-right: 5px;
+text-align: center;
+background-color: palegoldenrod;
+font-family: Lucida Sans Unicode; 
+font-size: 75%;
+	
+}
+
+.tagcell a:link{
+	color: darkblue;
+}
+
+.tagcell a:hover{
+	
+	font-Weight: Bold;
+}
+
+.cell a:hover{
+	font-weight: bold;
+	background-color: white;
+}
+
+#content{
+	background-color: white;
+	width: 150px;
+	
+}
+.search{
+	
+
+	
+}
+
+#content a:hover{
+	color: green;
+	font-weight: bold;
+}
+
+.usercell{
+display: table-cell;
+border: none;
+border-width: thin;
+width: 100px;
+height: 0px;
+padding-left: 0px;
+padding-right: 0px;
+text-align: center;
+font-weight: bold;
+
+
+
+}
+.userrows{
+	display: table-row;
+	
+
+}
+
+.userrows a:hover{
+	
+	background-color: white;
+	font-size: 110%;
+}
+.userrows a:link{
+
+}
+
+

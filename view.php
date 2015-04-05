@@ -21,17 +21,18 @@ $rows=mysqli_fetch_array($result);
 
 $login = $_SESSION['username'];
 
+
 ?>
-
 <!DOCTYPE html>
-<html>
+<html>   
 <head>
-<meta charset="UTF-8" />
-<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="style.css">
+<meta content="utf-8" http-equiv="encoding">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="searchscript.js"></script>
 <script src="script.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
 <title>Ask 4Gamers: an Ask site for gamers</title>
 
 </head>
@@ -39,6 +40,12 @@ $login = $_SESSION['username'];
 <h1> A4G </h1>
 
 <body>
+	<div class = "search">
+	<form  role="form" method="post" >
+		<input type="text" class="form-control" id="keyword" placeholder="Enter a username"/>
+	</form>
+	<ul id="content"></ul>
+
 
 <?php
 	$uname = $_SESSION['username'];
@@ -50,6 +57,8 @@ $login = $_SESSION['username'];
 	$results=$db->query($sql1);
 
 	$row=mysqli_fetch_array($results);
+
+	$uid=$row['id'];
 
 	$sqlpic ="SELECT picture FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 
@@ -66,56 +75,83 @@ $login = $_SESSION['username'];
 		echo"<img width='50' height='50' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
 	}
 ?>  
-<td> <strong>Welcome, </strong> <a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a> !  (<a href="index.php?action=logout">log out</a>)</td>
+<div class = "user">
+	<td> <strong>Welcome, </strong>
+		<?php
 
+$sqladmin= "SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 
-<table width="400" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
+$adres=$db->query($sqladmin);
+$adrow=mysqli_fetch_array($adres);
+
+if($adrow['admin'] == 1){
+	
+	?>
+<div class="admin"><td>Admin</td></div>
+	<?php
+					}
+	$scr=0;
+	$scr = $adrow['score'];
+
+	?>
+	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a> !  <div class = "score"><td>Score:<?php echo $scr; ?></td> </div>
+
+	(<a href="index.php?action=logout">log out</a>)</td>
+
+</div>
 
 <tr>
-
-<td><table width="100%" border="0" cellpadding="3" cellspacing="1" bordercolor="1" bgcolor="#FFFFFF">
-
-<tr>
-
-<td bgcolor="#F8F7F1"><strong><?php echo $rows['topic']; ?></strong></td>
-
+<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="index.php"><strong>Back to Main Page</strong> </a></td>
 </tr>
 
+<div class="table">
+
 <tr>
 
-<td bgcolor="#F8F7F1"><?php echo $rows['detail']; ?></td>
+<td>
 
-</tr>
-<tr>
-<?php
-$name = "Anon";
-$number = $rows['u_id'];
+<div class="heading "<tr><td bgcolor="#F8F7F1"><strong><?php echo $rows['topic']; ?></strong></td></tr></div>
+<div class="viewcell">
 
-$sqli="SELECT username FROM `$tbl_name2` WHERE `id`= $number";
-//echo $sqli;
+<div class="vcell">
+	<tr>
 
-$res=$db->query($sqli);
+		<td bgcolor="#F8F7F1"><?php echo $rows['detail']; ?></td>
 
-$row=mysqli_fetch_array($res);
+		<br />
 
 
-if (isset($row)){
-	$name=$row['username'];
-}
+			<?php
+				$name = "Anon";
+				$number = $rows['u_id'];
 
-if($number == 0)
-{
-	$name="Anon";
-}
+				$sqli="SELECT username FROM `$tbl_name2` WHERE `id`= $number";
+				//echo $sqli;
+
+				$res=$db->query($sqli);
+
+				$row=mysqli_fetch_array($res);
 
 
-//echo $name;
+				if (isset($row)){
+					$name=$row['username'];
+					}
+
+					if($number == 0)
+						{
+							$name="Anon";
+						}
 
 
-?>
-<td bgcolor="#F8F7F1"><strong>By :</strong> <a href="profile.php?id=<?php echo $rows['u_id']; ?>" ><?php echo $name; ?></a>
+						//echo $name;
 
-<?php
+
+			?>
+		<tr>
+
+	<td bgcolor="#F8F7F1"><strong>By :</strong> <a href="profile.php?id=<?php echo $rows['u_id']; ?>" ><?php echo $name; ?></a>
+
+	<?php
 	
 	$sqlpicture = "SELECT picture FROM `$tbl_name2` WHERE `id` =$number";
 
@@ -125,179 +161,185 @@ if($number == 0)
 	$picrow=mysqli_fetch_array($picres);
 
 	if($picrow['picture'] == "" ){
-		echo "<img width='20' height = '20' src='Pictures/default.png' alt='Default Profile Pic'>";
+		echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
 
 	}
 	else{
-		echo"<img width='20' height='20' src='Pictures/".$picrow['picture']."' alt=Profile Pic'>";
+		echo"<img width='50' height='50' src='Pictures/".$picrow['picture']."' alt=Profile Pic'>";
 	}
-?>  
+	?>  
+
+	</td>
+
+
+		</tr>
+		<br />
+
+	<tr>
+	<td bgcolor="#F8F7F1"><strong>Date/time : </strong><?php echo $rows['datetime']; ?></td>
+	</tr>
+	</td>
+	</tr>
+</div>
+	
+	<br />
+<!--new line -->
+	
+			<?php
+			$sql2="SELECT * FROM `$tbl_name3` WHERE `question_id` = $id ORDER BY `like` DESC, `vote` DESC";
+			//echo $sql2; 
+			$result2=$db->query($sql2);
+				while($rows=mysqli_fetch_array($result2)){
+					?>
+					
+					<tr> 
+					<div class="vcell">
+					<td>
+						<?php
+					$num = $rows['user_id'];
+					$sqli2="SELECT * FROM `$tbl_name2` WHERE `id`= $num";
+					//echo $sqli;
+
+					$ress=$db->query($sqli2);
+
+					$roww=mysqli_fetch_array($ress);
+
+				if (isset($ress)){$a_name=$roww['username'];
+}
 
 
 
+				if($num == 0)
+{
+$a_name="Anon";
+}
+
+			?>
+			
+			<td><strong>Name</strong></td>
+			<td>:</td>
+			<td><a href="profile.php?id=<?php echo $roww['id']; ?>"><?php echo $a_name; ?></a></td>
+			<?php
+				$sqlpicture = "SELECT picture FROM `$tbl_name2` WHERE `id` =$num";
+
+				//echo $sqlpicture; 
+
+				$picres=$db->query($sqlpicture);
+				$picrow=mysqli_fetch_array($picres);
+
+				if($picrow['picture'] == "" ){
+					echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
+
+					}
+					else{
+					echo"<img width='50' height='50' src='Pictures/".$picrow['picture']."' alt=Profile Pic'>";
+					}
+
+
+			?>
+			<br />
+		
+			<td>
+				<td><strong>Answer</strong></td>
+				<td>:</td>
+				<td><?php echo $rows['a_answer']; ?></td>
+				<br />
+				<td><strong>Date/Time</strong></td>
+				<td>:</td>
+				<td><?php echo $rows['a_datetime']; ?></td>
+				<br />
+
+			<?php 
+
+				$freeze = "SELECT freeze FROM `$tbl_name` WHERE `q_id` = $id";
+
+				$frz=$db->query($freeze);
+
+				$frez=mysqli_fetch_array($frz);
+
+				if($frez['freeze'] == 0){
+
+
+			?>
+				<div class="item" data-postid="<?php echo $rows['a_id']; ?>" data-score="<?php echo $rows['vote']; ?>" data-user="<?php echo $uid; ?>">
+					<div class = "vote-span">
+						<div class="vote" data-action="up" title="Vote up">
+							<i class = "icon-chevron-up"></i>
+						</div><!--vote up -->
+						<div class="vote-score"><?php echo $rows['vote']; ?></div>
+						<div class="vote" data-action="down" title="Vote down">
+							<i class="icon-chevron-down"></i>
+						</div><!-- vote down -->
+					</div><!-- voting -->
+				</div><!-- item -->
+				<br />
+
+
+
+	
+			<?php
+			$like= $rows['a_id'];
+			if($_SESSION['username'] == $name && $rows['like'] == 0){
+				?>
+
+			<div class = "likecell"> <a href="like.php?like=<?php echo $like; ?>&id=<?php echo $id; ?>">Like this Answer?</a></div>
+
+			<?php
+		}
+		?>
+		
+		<?php
+		}
+		if($rows['like'] == 1){ ?>
+		<tr><div class="like"><td ><?php echo $name; ?> liked this answer</td> </div></tr>
+
+		<?php
+		}
+
+
+	
+		?>
 </td>
-
+</div>
 </tr>
+<br />
+<?php
 
-<tr>
-
-<td bgcolor="#F8F7F1"><strong>Date/time : </strong><?php echo $rows['datetime']; ?></td>
-
-</tr>
+}
 
 
+if($frez['freeze'] == 0) 
 
-</table></td>
-
-</tr>
-
-</table>
-
-<BR>
-	<?php
-
-$sql2="SELECT * FROM `$tbl_name3` WHERE `question_id` = $id  ORDER BY `like` DESC, `vote` DESC"; 
-
-//echo $sql2; 
-$result2=$db->query($sql2);
-while($rows=mysqli_fetch_array($result2)){
+{
 
 	?>
-<table width="400" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
 
+
+
+<div class="tableanswer">
+<form name="form1" method="post" action="add_answer.php">
+	<tr>
+<td valign="top"><strong>Answer</strong></td>
+<td valign="top">:</td>
+<td><textarea name="a_answer" cols="45" rows="3" id="a_answer"></textarea></td>
+</tr>
 <tr>
-
-<td><table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
-
-<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><input name="id" type="hidden" value="<?php echo $id; ?>"></td>
+<td><input name ="user" type="hidden" value="<?php echo $login; ?>"></td>
+<td><input type="submit" name="Submit" value="Submit"> <input type="reset" name="Submit2" value="Reset"></td>
+</tr>
+</form>
+</div>
 
 <?php
-
-$num = $rows['user_id'];
-$sqli2="SELECT * FROM `$tbl_name2` WHERE `id`= $num";
-//echo $sqli;
-
-$ress=$db->query($sqli2);
-
-$roww=mysqli_fetch_array($ress);
-
-if (isset($ress)){
-$a_name=$roww['username'];
-}
-
-if($num == 0)
-{
-	$a_name="Anon";
-}
-
-
-
-?>
-
-
-<td bgcolor="#F8F7F1"><strong>Name</strong></td>
-
-<td bgcolor="#F8F7F1">:</td>
-
-
-<td bgcolor="#F8F7F1"><a href="profile.php?id=<?php echo $roww['id']; ?>"> <?php echo $a_name; ?> </a>
-
-<?php
-	
-	$sqlpicture = "SELECT picture FROM `$tbl_name2` WHERE `id` =$num";
-
-	//echo $sqlpicture; 
-
-	$picres=$db->query($sqlpicture);
-	$picrow=mysqli_fetch_array($picres);
-
-	if($picrow['picture'] == "" ){
-		echo "<img width='20' height = '20' src='Pictures/default.png' alt='Default Profile Pic'>";
-
 	}
-	else{
-		echo"<img width='20' height='20' src='Pictures/".$picrow['picture']."' alt=Profile Pic'>";
-	}
-?>  
-
-
-
-
-
-
-
-
-
-
-</td>
-
-</tr>
-<form method="post"id="like_form" action="like.php">
-<tr>
-
-<td bgcolor="#F8F7F1"><strong>Answer</strong></td>
-
-<td bgcolor="#F8F7F1">:</td>
-
-<td bgcolor="#F8F7F1"><?php echo $rows['a_answer']; ?></td>
-
-</tr>
-<tr>
-<td bgcolor="#F8F7F1"><strong>Date/Time</strong></td>
-<td bgcolor="#F8F7F1">:</td>
-<td bgcolor="#F8F7F1"><?php echo $rows['a_datetime']; ?></td>
-</tr>
-</table></td>
-</tr>
-<div class="item" data-postid="<?php echo $rows['a_id']; ?>" data-score="<?php echo $rows['vote']; ?>">
-<div class = "vote-span">
-	<div class="vote" data-action="up" title="Vote up">
-		<i class = "icon-chevron-up"></i>
-	</div><!--vote up -->
-	<div class="vote-score"><?php echo $rows['vote']; ?></div>
-	<div class="vote" data-action="down" title="Vote down">
-		<i class="icon-chevron-down"></i>
-	</div><!-- vote down -->
-</div><!-- voting -->
-</div><!-- item -->
-
-
-
-
-<?php
-$like = $rows['a_id'];
-if($_SESSION['username'] == $name && $rows['like'] == 0){ ?>
-
-<tr>
-
-<td><input name="like" form="like_form" type="hidden" value="<?php echo $like; ?>"></td>
-<input name="id" form="like_form" type="hidden" value="<?php echo $id; ?>"></td>
-<input type="submit" form="like_form" value="Like this Answer?">
-
-</tr>
-
-<?php	
-}
-if($rows['like'] == 1){ ?>
-
-<tr>
-<td bgcolor="#33fa57"><?php echo $name; ?> liked this answer</td>
-
-
-</tr>
+	?>
+	</div>
 
 <?php
 
-}
-
-?>
-
-
-</table></td>
-</tr>
-</table><br></form>
-<?php
-}
 
 
 
@@ -357,33 +399,7 @@ $repss=$db->query($sqlr);
 ?>
 
 
-<BR>
-	<table width="400" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
-<tr>
-<form name="form1" method="post" action="add_answer.php">
-<td>
-<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
-<tr>
-<td valign="top"><strong>Answer</strong></td>
-<td valign="top">:</td>
-<td><textarea name="a_answer" cols="45" rows="3" id="a_answer"></textarea></td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><input name="id" type="hidden" value="<?php echo $id; ?>"></td>
-<td><input name ="user" type="hidden" value="<?php echo $login; ?>"></td>
-<td><input type="submit" name="Submit" value="Submit"> <input type="reset" name="Submit2" value="Reset"></td>
-</tr>
 
-<tr>
-<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="index.php"><strong>Back to Main Page</strong> </a></td>
-</tr>
-</table>
-</td>
-</form>
-</tr>
-</table>
 </body>
 
 

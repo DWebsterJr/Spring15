@@ -14,10 +14,25 @@ $db = new mysqli($host, $user,$pw,$db_name);
 //echo $_POST['id'];
 /// like = a_id
 
-$vote = $_POST['like'];
-$q =$_POST['id'];
+$vote = $_GET['like'];
+$q =$_GET['id'];
 
 $likes = 1;
+
+$z = 0;
+
+//echo "Question id: $q";
+//echo", ";
+//echo "Answer ID:$vote";
+
+$sreset = "UPDATE `$tbl_name3` SET `like` = $z WHERE `question_id` = $q";
+
+//echo $sreset;
+
+$reset =$db->query($sreset);
+
+
+
 
 $slike= "UPDATE `$tbl_name3` SET `like` = $likes WHERE `a_id` = $vote ";
 $results=$db->query($slike);
@@ -34,5 +49,6 @@ else
 	echo " ";
 	echo $slike;
 }
+
 
 ?>
