@@ -21,12 +21,12 @@ $result=$db->query($sql);
 <html>
 <head>
 	<title> Ask 4Gamers: an Ask site for gamers</title>
-<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+ <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="searchscript.js"></script>
+<script src="script.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<meta content="utf-8" http-equiv="encoding">
 <link rel="stylesheet" type="text/css" href="style.css">
 
 
@@ -65,8 +65,8 @@ if($adrow['admin'] == 1){
 $scr= $adrow['score'];
 	?>
 
-	<a href="profile.php?id=<?php echo $adrow['id']; ?>" ><?=$_SESSION['username']?> </a> ! 
-	<div class = "score"><td>Score:<?php echo $scr; ?></td> </div>
+	<a href="profile.php?id=<?php echo $adrow['id']; ?>" ><?=$_SESSION['username']?> </a> 
+	<td>Score:<?php echo $scr; ?></td>
 <?php
 
 	$sqlpic ="SELECT picture FROM `$tbl_name2` WHERE `username` = '".$uname. "'";

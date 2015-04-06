@@ -50,7 +50,12 @@ $row=mysqli_fetch_array($results);
 <head>
 	<title> Ask 4Gamers: an Ask site for gamers</title>
 
-<meta content="utf-8" http-equiv="encoding">
+<meta charset="UTF-8">
+ <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="searchscript.js"></script>
+<script src="script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>

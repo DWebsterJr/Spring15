@@ -23,13 +23,15 @@ $rows=mysqli_fetch_array($result);
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="script.js"></script>
-
 <title>Ask 4Gamers: an Ask site for gamers</title>
+<meta charset="UTF-8">
+ <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="searchscript.js"></script>
+<script src="script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+
 
 </head>
 
@@ -81,7 +83,7 @@ if($adrow['admin'] == 1){
 
 		$scr=$adrow['score'];
 	?>
-	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a> !  <div class = "score"><td>Score:<?php echo $scr; ?></td> </div>
+	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a> <td>Score:<?php echo $scr; ?></td>
 
 	(<a href="index.php?action=logout">log out</a>)</td>
 
