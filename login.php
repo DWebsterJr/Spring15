@@ -19,64 +19,58 @@
 <div class="login">
 <div class="olduser">
 
-<tr>
+
 <form name="form1" method="post" action="checklogin.php" accept-charset="UTF-8">
-<td>
-<tr>
+
+
 	<header> Are you already a user? Login here</header>
 
-</tr>
-<tr>
-<td width="78">Username</td>
-<td width="6">:</td>
-<td width="294"><input name="username" type="text" id="username"></td>
-</tr>
-<tr>
-<td>Password</td>
-<td>:</td>
-<td><input name="password" type="password" id="password"></td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><input type="submit" name="Submit" value="Login"></td>
-</tr>
-</td>
+
+<strong>Username</strong>
+:
+<input name="username" type="text" id="username">
+
+
+<strong>Password</strong>
+:
+<input name="password" type="password" id="password">
+
+&nbsp; &nbsp;
+<input type="submit" name="Submit" value="Login">
 </form>
 </tr>
 
 </div>
 
 <div class="newuser">
-<tr>
+
 <form name="form1" method="post" action="signup.php" accept-charset="UTF-8">
-<td>
-<tr>
+
+
 <header> Are you new here? Register here</header>
-</tr>
-<tr>
-<td width="78">Username</td>
-<td width="6">:</td>
-<td width="294"><input name="newuser" type="text" id="newuser"></td>
-</tr>
-<tr>
-<td>Password</td>
-<td>:</td>
-<td><input name="newpass" type="password" id="newpass"></td>
-</tr>
-<tr>
-<td> Confirm Password</td>
-<td>:</td>
-<td><input name="confirm" type="password" id="confirm"></td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><input type="submit" name="Submit" value="Submit"></td>
-</tr>
-</td>
+
+
+<strong>Username</strong>
+:
+<input name="newuser" type="text" id="newuser">
+
+<strong>E-mail</strong>
+:
+<input name="email" type="text" id="email">
+
+<strong>Password</strong>
+:
+<input name="newpass" type="password" id="newpass">
+
+
+<strong> Confirm Password</strong>
+:
+<input name="confirm" type="password" id="confirm">
+&nbsp;
+&nbsp;
+<input type="submit" name="Submit" value="Submit">
+
 </form>
-</tr>
 
 
 
