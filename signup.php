@@ -84,6 +84,8 @@ if($result1){
 	$_SESSION['loggedIn'] = True;
 
 	
+	
+
 	$headers = 
 		"From: dwebster91@yahoo.com " . "\r\n" .
 		"Reply-To: dwebster91@yahoo.com" ."\r\n" ;
@@ -92,13 +94,44 @@ if($result1){
 
 	$body=" Hi <br/> <br/> We need to make sure you are human. Please verify your email and get started using your account. <br/> <br/> <a href=validate.php?id=<?php echo $id; ?>validate.php?id=<?php echo $id; ?></a>" ;
 
-echo "$headers    $to $subject $body";
+	$postQueryParameters = 
+		http_build_query(array(
 
-	mail($to, $subject,$body, $headers);
+				"from" => 'Mailgun Sandbox <postmaster@sandbox84d0b092e19e41b6857a10c58e584173.mailgun.org>',
+				"to" => "$email",
+				"subject" => "CS418 - Milestone 4 Email Verification",
+				"text" => "Hi <br/> <br/> We need to make sure you are human. Please verify your email and get started using your account. <br/> <br/> <a href=validate.php?id=<?php echo $id; ?>validate.php?id=<?php echo $id; ?></a> "
+
+			));
+		$username = "api";
+
+		$password ="key-67feadc4d360ce2d2b7df92e453d9d29";
+
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "https://api.mailgun.net/v3/sandbox84d0b092e19e41b6857a10c58e584173.mailgun.org/messages");
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_USERPWD, $username. ":" .$password);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $postQueryParameters);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		$output = curl_exec($ch);
 
 
-	echo "You registered to this website, make sure to check your email to valiadate your account.";
-	echo "<a href=login.php>return to login page</a>";
+	if($output != false){
+		echo $output;
+		echo "done";
+		echo "You registered to this website, make sure to check your email to valiadate your account.";
+		echo "<a href=login.php>return to login page</a>";
+	}else{
+		echo "There was an error";
+		echo $output;
+		echo curl_error($ch);
+	}
+	
+	curl_close($ch);
+
+
+	
 
 
 	//header("location:index.php");

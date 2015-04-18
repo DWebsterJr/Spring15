@@ -66,7 +66,7 @@ $scr= $adrow['score'];
 	?>
 
 	<a href="profile.php?id=<?php echo $adrow['id']; ?>" ><?=$_SESSION['username']?> </a> 
-	<td>Score:<?php echo $scr; ?></td>
+	Score:<?php echo $scr; ?>
 <?php
 
 	$sqlpic ="SELECT picture FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
@@ -90,27 +90,25 @@ $scr= $adrow['score'];
 <div class = "table">
 <div class = "create">
 <form>
-<tr>
-<td><input name="username" type="hidden" value="<?php echo $username; ?>"></td>
-<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="create.php"><strong>Create New Topic</strong> </a></td>
-</tr>
+<input name="username" type="hidden" value="<?php echo $username; ?>">
+<a href="create.php"><strong>Create New Topic</strong> </a>
+
 </form>
 <?php 
 if($_SESSION['admin']==1){
 	?>
-
-<td><a href="user.php"><strong>List of users</strong></a></td>
+<a href="user.php"><strong>List of users</strong></a>
 
 <?php
 }
 ?>
 </div>
 <div class = "heading">
-	<tr>
-	<div class=  "usercell" ><td><strong>User</strong></td></div>
-	<div class = "usercell" ><td><strong># of Questions</strong></td></div>
-	<div class = "usercell" ><td><strong>Score</strong></td></div>
-	</tr>
+
+	<div class=  "usercell" ><strong>User</strong></div>
+	<div class = "usercell" ><strong># of Questions</strong></div>
+	<div class = "usercell" ><strong>Score</strong></div>
+
 </div>
 
 <?php 
@@ -120,13 +118,13 @@ if($_SESSION['admin']==1){
 		# code...
 
 		?>
-		<tr>
+	
 			<div class="userrows">
-				<div class="usercell"><td><a href="profile.php?id=<?php echo $rows['id']; ?>"><?php echo $rows['username']; ?></a></td></div>
-				<div class="usercell"><td><?php echo $rows['q']; ?></td></div>
-				<div class="usercell"><td><?php echo $rows['score']; ?></td></div>
+				<div class="usercell"><a href="profile.php?id=<?php echo $rows['id']; ?>"><?php echo $rows['username']; ?></a></div>
+				<div class="usercell"><?php echo $rows['q']; ?></div>
+				<div class="usercell"><?php echo $rows['score']; ?></div>
 			</div>
-		</tr>
+	
 		<?php
 	}
 

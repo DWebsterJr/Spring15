@@ -54,9 +54,9 @@ if(isset($_POST['submit'])){
 
 <h1> A4G: Profile </h1>
 
-<tr>
-<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="index.php"><strong>Back to Main Page</strong> </a></td>
-</tr>
+
+<a href="index.php"><strong>Back to Main Page</strong> </a>
+
 
 <body>
 	<div class = "search">
@@ -95,7 +95,7 @@ if(isset($_POST['submit'])){
 		echo"<img width='30' height='30' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
 	}
 ?>  
-	<td> <strong>Welcome, </strong>
+	<strong>Welcome, </strong>
 <?php
 
 $sqladmin= "SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
@@ -105,14 +105,14 @@ $adrow=mysqli_fetch_array($adres);
 
 if($adrow['admin'] == 1){
 	?>
-<div class="admin"><td>Admin</td></div>
+<div class="admin">Admin</div>
 	<?php
 					}
 	$scr=$adrow['score'];
 
 	?>
 		
-	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a>  <td>Score:<?php echo $scr; ?></td>
+	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a>  Score:<?php echo $scr; ?>
 </div>
 
 
@@ -140,7 +140,7 @@ if( $roname['username'] == $_SESSION['username']){
 <form action = "" method="post" enctype="multipart/form-data">
 	<input type = "file" name="file">
 	<input type="submit" name="submit" value="Upload">
-	<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="create.php"><strong>Create New Topic</strong> </a></td>
+	<a href="create.php"><strong>Create New Topic</strong> </a>
 </form>
 </div>
 
@@ -166,22 +166,21 @@ if( $roname['username'] == $_SESSION['username']){
 <div class = "table">
 <h3>Questions</h3>
 <div class = "heading">
-	<tr>
-	<div class=  "cell" ><td><strong>Status</strong></td></div>	
-	<div class = "cell" ><td><strong>#</strong></td></div>
-	<div class = "cell" ><td><strong>Topic</strong></td></div>
-	<div class = "cell" ><td><strong>Views</strong></td></div>
-	<div class = "cell" ><td><strong>Replies</strong></td></div>
-	<div class = "cell" ><td><strong>Date/Time</strong></td></div>
-	<div class = "cell" ><td><strong>Vote</strong></td></div>
+	<div class=  "cell" ><strong>Status</strong></div>	
+	<div class = "cell" ><strong>#</strong></div>
+	<div class = "cell" ><strong>Topic</strong></div>
+	<div class = "cell" ><strong>Views</strong></div>
+	<div class = "cell" ><strong>Replies</strong></div>
+	<div class = "cell" ><strong>Date/Time</strong></div>
+	<div class = "cell" ><strong>Vote</strong></div>
 
 <?php
 
 	if($_SESSION['admin'] == 1){
 		?>
-		<div class="cell"><td><strong>Lock/Unlock</strong></td></div>
-		<div class="cell"><td><strong>Edit</strong></td></div>
-		<div class="cell"><td><strong>Delete</strong></td></div>
+		<div class="cell"><strong>Lock/Unlock</strong></div>
+		<div class="cell"><strong>Edit</strong></div>
+		<div class="cell"><strong>Delete</strong></div>
 		<?php
 
 	}
@@ -196,7 +195,7 @@ if( $roname['username'] == $_SESSION['username']){
 	while($rows=mysqli_fetch_array($result)){
 		$num_q++;
 		?>
-		<tr>
+		
 		<div class = "rows">
 <?php
 			if($rows['freeze'] == 1){
@@ -215,8 +214,8 @@ if( $roname['username'] == $_SESSION['username']){
 							}
 			?>
 		
-			<div class = "cell" ><td><?php echo $rows['q_id']; ?></td></div>
-			<div class = "cell" ><td><a href="view.php?id=<?php echo $rows['q_id']; ?> "><?php echo $rows['topic']; ?></a><BR></td>
+			<div class = "cell" ><?php echo $rows['q_id']; ?></div>
+			<div class = "cell" ><a href="view.php?id=<?php echo $rows['q_id']; ?> "><?php echo $rows['topic']; ?></a><BR>
 				<?php
 					$quest = $rows['q_id'];
 					$tag_num = array();
@@ -247,7 +246,7 @@ if( $roname['username'] == $_SESSION['username']){
 						# code...
 						?>
 
-						<div class="tagcell"><td><a href="tag.php?id=<?php echo $value; ?>"><?php echo $tname; ?></a></td></div>
+						<div class="tagcell"><a href="tag.php?id=<?php echo $value; ?>"><?php echo $tname; ?></a></div>
 						
 
 						<?php
@@ -267,10 +266,10 @@ if( $roname['username'] == $_SESSION['username']){
 
 
 			</div>
-			<div class = "cell" ><td><?php echo $rows['view']; ?></td></div>
-			<div class = "cell" ><td><?php echo $rows['reply']; ?></td></div>
-			<div class = "cell" ><td><?php echo $rows['datetime']; ?></td></div>
-			<div class = "cell" ><td><?php echo $rows['value']; ?> </td></div>
+			<div class = "cell" ><?php echo $rows['view']; ?></div>
+			<div class = "cell" ><?php echo $rows['reply']; ?></div>
+			<div class = "cell" ><?php echo $rows['datetime']; ?></div>
+			<div class = "cell" ><?php echo $rows['value']; ?> </div>
 			<?php
 			if($_SESSION['admin'] == 1 AND $rows['freeze'] == 0)
 				{  
@@ -289,18 +288,23 @@ if( $roname['username'] == $_SESSION['username']){
 				<?php
 				}
 
+			if($_SESSION['admin'] == 1)
+				{  
+
 			?>
 
-				<div class="cell"><td><a href="edit.php?id=<?php echo $rows['q_id']; ?> ">Edit</a><BR></td></div>
+				<div class="cell"><a href="edit.php?id=<?php echo $rows['q_id']; ?> ">Edit</a><BR></div>
 
 				<div class="cell">
-					<td><a href="delete.php?id=<?php echo $rows['q_id']; ?> ">Delete</a><BR></td>
+					<a href="delete.php?id=<?php echo $rows['q_id']; ?> ">Delete</a><BR>
 				</div>
 
-
+				<?php
+			}
+			?>
 
 		</div>
-		</tr>
+		
 		
 
 		<?php

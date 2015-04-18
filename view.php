@@ -76,7 +76,7 @@ $login = $_SESSION['username'];
 	}
 ?>  
 <div class = "user">
-	<td> <strong>Welcome, </strong>
+	 <strong>Welcome, </strong>
 		<?php
 
 $sqladmin= "SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
@@ -94,29 +94,29 @@ if($adrow['admin'] == 1){
 	$scr = $adrow['score'];
 
 	?>
-	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a>  <td>Score:<?php echo $scr; ?></td>
+	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a>  Score:<?php echo $scr; ?>
 
-	(<a href="index.php?action=logout">log out</a>)</td>
+	(<a href="index.php?action=logout">log out</a>)
 
 </div>
 
-<tr>
-<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="index.php"><strong>Back to Main Page</strong> </a></td>
-</tr>
+
+<a href="index.php"><strong>Back to Main Page</strong> </a>
+
 
 <div class="table">
 
-<tr>
 
-<td>
 
-<div class="heading "<tr><td bgcolor="#F8F7F1"><strong><?php echo $rows['topic']; ?></strong></td></tr></div>
+
+
+<div class="heading "><strong><?php echo $rows['topic']; ?></strong></div>
 <div class="viewcell">
 
 <div class="vcell">
-	<tr>
+	
 
-		<td bgcolor="#F8F7F1"><?php echo $rows['detail']; ?></td>
+		<?php echo $rows['detail']; ?>
 
 		<br />
 
@@ -147,9 +147,9 @@ if($adrow['admin'] == 1){
 
 
 			?>
-		<tr>
+	
 
-	<td bgcolor="#F8F7F1"><strong>By :</strong> <a href="profile.php?id=<?php echo $rows['u_id']; ?>" ><?php echo $name; ?></a>
+	<strong>By :</strong> <a href="profile.php?id=<?php echo $rows['u_id']; ?>" ><?php echo $name; ?></a>
 
 	<?php
 	
@@ -169,17 +169,17 @@ if($adrow['admin'] == 1){
 	}
 	?>  
 
-	</td>
+	
 
 
-		</tr>
+
 		<br />
 
-	<tr>
-	<td bgcolor="#F8F7F1"><strong>Date/time : </strong><?php echo $rows['datetime']; ?></td>
-	</tr>
-	</td>
-	</tr>
+	
+	<strong>Date/time : </strong><?php echo $rows['datetime']; ?>
+	
+
+
 </div>
 	
 	<br />
@@ -192,9 +192,9 @@ if($adrow['admin'] == 1){
 				while($rows=mysqli_fetch_array($result2)){
 					?>
 					
-					<tr> 
+					
 					<div class="vcell">
-					<td>
+					
 						<?php
 					$num = $rows['user_id'];
 					$sqli2="SELECT * FROM `$tbl_name2` WHERE `id`= $num";
@@ -216,9 +216,8 @@ $a_name="Anon";
 
 			?>
 			
-			<td><strong>Name</strong></td>
-			<td>:</td>
-			<td><a href="profile.php?id=<?php echo $roww['id']; ?>"><?php echo $a_name; ?></a></td>
+			<strong>Name</strong>:
+			<a href="profile.php?id=<?php echo $roww['id']; ?>"><?php echo $a_name; ?></a>
 			<?php
 				$sqlpicture = "SELECT picture FROM `$tbl_name2` WHERE `id` =$num";
 
@@ -239,14 +238,14 @@ $a_name="Anon";
 			?>
 			<br />
 		
-			<td>
-				<td><strong>Answer</strong></td>
-				<td>:</td>
-				<td><?php echo $rows['a_answer']; ?></td>
+			
+				<strong>Answer</strong>
+				:
+				<?php echo $rows['a_answer']; ?>
 				<br />
-				<td><strong>Date/Time</strong></td>
-				<td>:</td>
-				<td><?php echo $rows['a_datetime']; ?></td>
+				<strong>Date/Time</strong>
+				:
+				<?php echo $rows['a_datetime']; ?>
 				<br />
 
 			<?php 
@@ -291,7 +290,7 @@ $a_name="Anon";
 		<?php
 		}
 		if($rows['like'] == 1){ ?>
-		<tr><div class="like"><td ><?php echo $name; ?> liked this answer</td> </div></tr>
+		<div class="like"><?php echo $name; ?> liked this answer</div>
 
 		<?php
 		}
@@ -299,9 +298,9 @@ $a_name="Anon";
 
 	
 		?>
-</td>
+
 </div>
-</tr>
+
 <br />
 <?php
 
@@ -318,18 +317,17 @@ if($frez['freeze'] == 0)
 
 <div class="tableanswer">
 <form name="form1" method="post" action="add_answer.php">
-	<tr>
-<td valign="top"><strong>Answer</strong></td>
-<td valign="top">:</td>
-<td><textarea name="a_answer" cols="45" rows="3" id="a_answer"></textarea></td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><input name="id" type="hidden" value="<?php echo $id; ?>"></td>
-<td><input name ="user" type="hidden" value="<?php echo $login; ?>"></td>
-<td><input type="submit" name="Submit" value="Submit"> <input type="reset" name="Submit2" value="Reset"></td>
-</tr>
+
+<strong>Answer</strong>
+:
+<textarea name="a_answer" cols="45" rows="3" id="a_answer"></textarea>
+
+
+&nbsp;
+&nbsp;
+<input name="id" type="hidden" value="<?php echo $id; ?>">
+<input name ="user" type="hidden" value="<?php echo $login; ?>">
+<input type="submit" name="Submit" value="Submit"> <input type="reset" name="Submit2" value="Reset">
 </form>
 </div>
 

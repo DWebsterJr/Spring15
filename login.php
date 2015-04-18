@@ -1,5 +1,9 @@
 <?php
 
+$clientId="725e08a43209c83e9833";
+$clientSecrect ="";
+
+
 ?>
 
 <!DOCTYPE html>
@@ -7,6 +11,14 @@
 <head>
 <title> Ask 4Gamers: an Ask site for gamers</title>
 <meta charset="UTF-8">
+<script>
+document.getElementById('gitAuthButton').addEventListener("click",signinWIthGithub );
+	function signinWIthGithub(){
+		window.location.href = "https://github.com/login/oauth/authorize?client_id=<?=$clientId ?>&scope=user";
+	}
+
+
+</script>
  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="searchscript.js"></script>
@@ -71,11 +83,15 @@
 <input type="submit" name="Submit" value="Submit">
 
 </form>
-
-
-
-
 </div>
+
+<div class="olduser">
+
+	<button id="gitAuthButton">Sign in with Github</button>
+
+	</div>
+
+
 
 </div>
 

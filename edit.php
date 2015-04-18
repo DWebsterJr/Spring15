@@ -66,7 +66,7 @@ $rows=mysqli_fetch_array($result);
 	}
 ?>  
 <div class = "user">
-	<td> <strong>Welcome, </strong>
+	<strong>Welcome, </strong>
 		<?php
 
 $sqladmin= "SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
@@ -77,41 +77,39 @@ $adrow=mysqli_fetch_array($adres);
 if($adrow['admin'] == 1){
 	
 	?>
-<div class="admin"><td>Admin</td></div>
+<div class="admin">Admin</div>
 	<?php
 					}
 
 		$scr=$adrow['score'];
 	?>
-	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a> <td>Score:<?php echo $scr; ?></td>
+	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a> Score:<?php echo $scr; ?>
 
 	(<a href="index.php?action=logout">log out</a>)</td>
 
 </div>
 
-<tr>
-<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="index.php"><strong>Back to Main Page</strong> </a></td>
-</tr>
+
+<a href="index.php"><strong>Back to Main Page</strong> </a>
+
 
 <div class="table">
 
 	<form name="editquestion" method="post" action="editq.php" accept-charset="UTF-8">
-	<tr>
-		<td>Topic:</td>
-		<td><input size="50" name="topic" type="text" id="topic" value="<?php echo $rows['topic']; ?>" /></td>
-	</tr>
-	<br>
-	<tr>
-		<td>Detail:</td>
-		<td><textarea name="detail" cols="50" rows="3" id="detail" ><?php echo $rows['detail']; ?></textarea></td>
-	</tr>
-	<tr>
-		<td>#:</td>
-		<td><input name="number" type="text" id="number" value="<?php echo $rows['q_id']; ?>" /></td>
-	</tr>
-	<br>
+		Topic:
+		<input size="50" name="topic" type="text" id="topic" value="<?php echo $rows['topic']; ?>" >
 
-	<td><input type="submit" name="Submit" value="Submit"></td>
+	<br />
+	
+		Detail:
+		<textarea name="detail" cols="50" rows="3" id="detail" ><?php echo $rows['detail']; ?></textarea>
+	
+		#:
+		<input name="number" type="text" id="number" value="<?php echo $rows['q_id']; ?>" >
+
+	<br />
+
+	<input type="submit" name="Submit" value="Submit">
 	</form>
 </div>
 
@@ -124,16 +122,16 @@ while ($rowa=mysqli_fetch_array($aresult)) {
 	?>
 	<div class="table">
 		<form name="editanswer" method="post" action="edita.php" accept-charset="UTF-8">
-		<tr>
-		<td>Answer</td>
-		<td><textarea name="answer" cols="50" rows="3" id="answer"><?php echo $rowa['a_answer']; ?></textarea></td>
-		</tr>
-		<tr>	
-			<td>#:</td>
-			<td><input name="num" type="text" id="num" value=" <?php echo $rowa['a_id']; ?>" /></td>
-		</tr>
-		<td><input type="submit" name="submit" id="submit" value="Submit" /></td>
-		<td><input type="submit" name="submit" id="submit" value="Delete" /></td>
+		
+		Answer
+		<textarea name="answer" cols="50" rows="3" id="answer"><?php echo $rowa['a_answer']; ?></textarea>
+	
+			
+			#:
+			<input name="num" type="text" id="num" value=" <?php echo $rowa['a_id']; ?>" />
+		
+		<input type="submit" name="submit" id="submit" value="Submit" />
+		<input type="submit" name="submit" id="submit" value="Delete" />
 		
 	</form>
 	</div>

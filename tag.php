@@ -65,7 +65,7 @@ $row=mysqli_fetch_array($results);
 	<h1> Ask 4Gamers: an Ask site for gamers</h1>
 	<h2>Tag: <?php echo $tagtitle ?></h2>
 <div class = "user">
-	<td> <strong>Welcome, </strong>
+	<strong>Welcome, </strong>
 <?php
 
 $sqladmin= "SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
@@ -76,7 +76,7 @@ $adrow=mysqli_fetch_array($adres);
 if($adrow['admin'] == 1){
 	$_SESSION['admin'] = $adrow['admin'];
 	?>
-<div class="admin"><td>Admin</td></div>
+<div class="admin">Admin</div>
 	<?php
 					}
 	else if($adrow['admin'] == 0){
@@ -85,7 +85,7 @@ if($adrow['admin'] == 1){
 $scr= $adrow['score'];
 	?>
 
-	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a> !  <div class = "score"><td>Score:<?php echo $scr; ?></td> </div>
+	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a> !  <div class = "score">Score:<?php echo $scr; ?></div>
 <?php
 
 	$sqlpic ="SELECT picture FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
@@ -110,37 +110,35 @@ $scr= $adrow['score'];
 
 <div class = "table"> <div class = "create">
 <form>
-<tr>
-<td><input name="username" type="hidden" value="<?php echo $username; ?>"></td>
-<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="create.php"><strong>Create New Topic</strong> </a></td>
-</tr>
+<input name="username" type="hidden" value="<?php echo $username; ?>">
+<a href="create.php"><strong>Create New Topic</strong> </a>
+
 <br />
-<tr>
-<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="index.php"><strong>Back to Main Page</strong> </a></td>
-</tr>
+<a href="index.php"><strong>Back to Main Page</strong> </a>
+
 </form>
 </div>  <div class = "heading">
 	<tr>
-	<div class=  "cell" ><td><strong>Status</strong></td></div>
-	<div class = "cell" ><td><strong>#</strong></td></div>
-	<div class = "cell" ><td><strong>Topic</strong></td></div>
-	<div class = "cell" ><td><strong>Views</strong></td></div>
-	<div class = "cell" ><td><strong>Replies</strong></td></div>
-	<div class = "cell" ><td><strong>Date/Time</strong></td></div>
-	<div class = "cell" ><td><strong>Vote</strong></td></div>
+	<div class=  "cell" ><strong>Status</strong></div>
+	<div class = "cell" ><strong>#</strong></div>
+	<div class = "cell" ><strong>Topic</strong></div>
+	<div class = "cell" ><strong>Views</strong></div>
+	<div class = "cell" ><strong>Replies</strong></div>
+	<div class = "cell" ><strong>Date/Time</strong></div>
+	<div class = "cell" ><strong>Vote</strong></div>
 
 <?php
 
 	if($_SESSION['admin'] == 1){
 		?>
-		<div class="cell"><td><strong>Freeze</strong></td></div>
-		<div class="cell"><td><strong>Edit</strong></td></div>
-		<div class="cell"><td><strong>Delete</strong></td></div>
+		<div class="cell"><strong>Freeze</strong></div>
+		<div class="cell"><strong>Edit</strong></div>
+		<div class="cell"><strong>Delete</strong></div>
 		<?php
 
 	}
 ?>
-	</tr>
+
 </div>
 <?php
 	$q = array();
@@ -186,8 +184,8 @@ $scr= $adrow['score'];
 
 							}
 			?>
-			<div class = "cell" ><td><?php echo $tagrow['q_id']; ?></td></div>
-			<div class = "cell" ><td><a href="view.php?id=<?php echo $tagrow['q_id']; ?> "><?php echo $tagrow['topic']; ?></a><BR></td>
+			<div class = "cell" ><?php echo $tagrow['q_id']; ?></div>
+			<div class = "cell" ><a href="view.php?id=<?php echo $tagrow['q_id']; ?> "><?php echo $tagrow['topic']; ?></a><BR>
 				<?php
 					$quest = $tagrow['q_id'];
 					$tag_num = array();
@@ -218,7 +216,7 @@ $scr= $adrow['score'];
 						# code...
 						?>
 
-						<div class="tagcell"><td><a href="tag.php?id=<?php echo $value; ?>"><?php echo $tname; ?></a></td></div>
+						<div class="tagcell"><a href="tag.php?id=<?php echo $value; ?>"><?php echo $tname; ?></a></div>
 						
 
 						<?php
@@ -231,10 +229,10 @@ $scr= $adrow['score'];
 
 			</div>
 
-			<div class = "cell" ><td><?php echo $tagrow['view']; ?></td></div>
-			<div class = "cell" ><td><?php echo $tagrow['reply']; ?></td></div>
-			<div class = "cell" ><td><?php echo $tagrow['datetime']; ?></td></div>
-			<div class = "cell" ><td><?php echo $tagrow['value']; ?> </td></div>
+			<div class = "cell" ><?php echo $tagrow['view']; ?></div>
+			<div class = "cell" ><?php echo $tagrow['reply']; ?></div>
+			<div class = "cell" ><?php echo $tagrow['datetime']; ?></div>
+			<div class = "cell" ><?php echo $tagrow['value']; ?> </div>
 			<?php
 			if($_SESSION['admin'] == 1 AND $tagrow['freeze'] == 0)
 				{  
@@ -251,15 +249,18 @@ $scr= $adrow['score'];
 				</div>
 				<?php
 			}
-
+			if($_SESSION['admin'] == 1)
+				{  
 			?>
 
-				<div class="cell"><td><a href="edit.php?id=<?php echo $tagrow['q_id']; ?> ">Edit</a><BR></td></div>
+				<div class="cell"><a href="edit.php?id=<?php echo $tagrow['q_id']; ?> ">Edit</a><BR></div>
 
 				<div class="cell">
-					<td><a href="delete.php?id=<?php echo $tagrow['q_id']; ?> ">Delete</a><BR></td>
+					<td><a href="delete.php?id=<?php echo $tagrow['q_id']; ?> ">Delete</a><BR>
 				</div>
-
+			<?php
+			}
+			?>
 			</div>
 			</tr> 
 

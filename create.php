@@ -56,7 +56,7 @@ $uname = $_SESSION['username'];
 	}
 ?>  
 <div class = "user">
-	<td> <strong>Welcome, </strong>
+	 <strong>Welcome, </strong>
 		<?php
 
 $sqladmin= "SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
@@ -67,55 +67,51 @@ $adrow=mysqli_fetch_array($adres);
 if($adrow['admin'] == 1){
 	
 	?>
-<div class="admin"><td>Admin</td></div>
+<div class="admin">Admin</div>
 	<?php
 					}
 					$scr=$adrow['score'];
 
 	?>
-	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a> <td>Score:<?php echo $scr; ?></td>
+	<a href="profile.php?id=<?php echo $row['id']; ?>" ><?=$_SESSION['username']?> </a> Score:<?php echo $scr; ?>
 
-	(<a href="index.php?action=logout">log out</a>)</td>
+	(<a href="index.php?action=logout">log out</a>)
 
 </div>
 
-<tr>
-<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="index.php"><strong>Back to Main Page</strong> </a></td>
-</tr>
+
+<a href="index.php"><strong>Back to Main Page</strong> </a>
+
 
 
 		
 
 <div class="table">
 	<form id="form1" name="form1" method="post" action="add.php">
-		<td>
+		
 			<div class="table">
 				
-				<tr>
-					<td width="14%"><strong>Topic</strog></td>
-					<td width="2%">:</td>
-					<td width="84%"><input name="topic" type="text" id="topic" size="50" /></td>
-				</tr>
-				<tr>
-					<td valign="top"><strong>Detail</strong></td>
-					<td valign="top">:</td>
-					<td><textarea name="detail" cols="50" rows="3" id="detail"></textarea></td>
-				</tr>
-				<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<tr>
-					<td valign="top"><strong>Tags</strong></td>
-					<td valign="top">:</td>
-				<td><input name="tags" type="text" maxlength="50" id="tag" /></td>
+				
+					<strong>Topic</strog>
+					:
+					<input name="topic" type="text" id="topic" size="50" />
+				
+					<strong>Detail</strong>
+					:
+					<textarea name="detail" cols="50" rows="3" id="detail"></textarea>
+				
+				&nbsp;
+				&nbsp;
+			
+					<strong>Tags</strong>
+					:
+				<input name="tags" type="text" maxlength="50" id="tag" />
 
-				</tr>
-				<td><input type="submit" name="Submit" value="Submit" /> <input type="reset" name="Submit2" value="Reset" /></td>
-</tr>
+				
+				<input type="submit" name="Submit" value="Submit" /> <input type="reset" name="Submit2" value="Reset" />
+
 </div>
-</td>
 </form>
-</tr>
 </div>
 
 
