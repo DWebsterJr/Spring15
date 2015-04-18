@@ -12,11 +12,26 @@ $clientSecrect ="";
 <title> Ask 4Gamers: an Ask site for gamers</title>
 <meta charset="UTF-8">
 <script>
-document.getElementById('gitAuthButton').addEventListener("click",signinWIthGithub );
-	function signinWIthGithub(){
+
+ function Git(){
+	window.location.href = "https://github.com/login/oauth/authorize?client_id=<?=$clientId ?>&scope=user";  
+}
+/*
+
+document.addEventListener("DOMContentLoaded", function(event){
+
+document.getElementById('gitAuthButton').addEventListener('click', signinWithGithub );
+});
+
+	function signinWithGithub(){
 		window.location.href = "https://github.com/login/oauth/authorize?client_id=<?=$clientId ?>&scope=user";
 	}
 
+
+document.getElementById("signinWithGithub").onclick = function(){
+	window.location.href= "https://github.com/login/oauth/authorize?client_id=<?=$clientId ?>&scope=user";
+};
+*/
 
 </script>
  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> 
@@ -87,7 +102,7 @@ document.getElementById('gitAuthButton').addEventListener("click",signinWIthGith
 
 <div class="olduser">
 
-	<button id="gitAuthButton">Sign in with Github</button>
+	<button onclick="Git()" id="gitButton">Sign in with Github</button>
 
 	</div>
 
