@@ -27,7 +27,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		$json = json_decode($server_output, true);
 
 
-		printf($json);
+		print_r($json);
 
 	}
 
