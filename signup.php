@@ -11,7 +11,7 @@ $db = new mysqli($host, $user,$pw,$db_name);
 
 $newname = $_POST['newuser'];
 $email =$_POST['email'];
-$email = addslashes($email);
+//$email = addslashes($email);
 $newpassword= $_POST['newpass'];
 $confirmpassword=$_POST['confirm'];
 
@@ -142,4 +142,7 @@ if($result1){
 
 
 ?>
+<<<<<<< HEAD
 
+=======
+>>>>>>> cab6290fba66414b342a88ea0bdea09ee315e00a

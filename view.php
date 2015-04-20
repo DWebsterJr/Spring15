@@ -258,7 +258,7 @@ $a_name="Anon";
 
 				if($frez['freeze'] == 0){
 
-
+if($adrow['validate']== 1){
 			?>
 				<div class="item" data-postid="<?php echo $rows['a_id']; ?>" data-score="<?php echo $rows['vote']; ?>" data-user="<?php echo $uid; ?>">
 					<div class = "vote-span">
@@ -277,6 +277,7 @@ $a_name="Anon";
 
 	
 			<?php
+			}
 			$like= $rows['a_id'];
 			if($_SESSION['username'] == $name && $rows['like'] == 0){
 				?>
