@@ -6,9 +6,9 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	if(isset($_GET['code'])){
 
 		$ch = curl_init();
-		curl_setopt($ch, CURLPT_URL, "https://github.com/login/oauth/access_token");
+		curl_setopt($ch, CURLOPT_URL, "https://github.com/login/oauth/access_token");
 
-		curl_setopt($ch, CURLPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
 											'code' => $_GET['code'],
 											'client_id' =>$clientId,
