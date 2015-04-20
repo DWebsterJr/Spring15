@@ -28,11 +28,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 		print_r($json);
-<<<<<<< HEAD
 
 		echo curl_error($ch);
-=======
->>>>>>> cab6290fba66414b342a88ea0bdea09ee315e00a
 
 	}
 
