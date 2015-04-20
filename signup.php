@@ -66,6 +66,7 @@ else
 $result1=$db->query($sql1);
 
 if($result1){
+
 	echo "Successful";
 	session_start();
 
@@ -86,13 +87,11 @@ if($result1){
 	
 	
 
-	$headers = 
-		"From: dwebster91@yahoo.com " . "\r\n" .
-		"Reply-To: dwebster91@yahoo.com" ."\r\n" ;
+	
 	$to = $email;
 	$subject ="Email verification";
 
-	$body=" Hi <br/> <br/> We need to make sure you are human. Please verify your email and get started using your account. <br/> <br/> <a href=validate.php?id=<?php echo $id; ?>validate.php?id=<?php echo $id; ?></a>" ;
+	$body=" Hi <br/> <br/> We need to make sure you are human. Please verify your email and get started using your account. <br/> <br/> <a href=validate.php?id=<?php echo $id; ?>http://wsdl-docker.cs.odu:60228/validate.php?id=<?php echo $id; ?></a>" ;
 
 	$postQueryParameters = 
 		http_build_query(array(
@@ -100,7 +99,7 @@ if($result1){
 				"from" => 'Mailgun Sandbox <postmaster@sandbox84d0b092e19e41b6857a10c58e584173.mailgun.org>',
 				"to" => "$email",
 				"subject" => "CS418 - Milestone 4 Email Verification",
-				"text" => "Hi <br/> <br/> We need to make sure you are human. Please verify your email and get started using your account. <br/> <br/> <a href=validate.php?id=<?php echo $id; ?>validate.php?id=<?php echo $id; ?></a> "
+				"text" => "Hi <br/> <br/> We need to make sure you are human. Please verify your email and get started using your account. <br/> <br/> <a href=http://wsdl-docker.cs.odu:60228/validate.php?id=<?php echo $id; ?>>http://wsdl-docker.cs.odu:60228/validate.php?id=<?php echo $id; ?></a>"
 
 			));
 		$username = "api";
@@ -116,6 +115,7 @@ if($result1){
 
 		$output = curl_exec($ch);
 
+		echo curl_error($ch);
 
 	if($output != false){
 		echo $output;
@@ -142,3 +142,4 @@ if($result1){
 
 
 ?>
+
