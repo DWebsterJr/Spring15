@@ -85,7 +85,22 @@ if($result1){
 	$_SESSION['loggedIn'] = True;
 
 	
-	
+
+$body = <<<EOD
+<html>
+
+<body>
+
+Hi <?php echo $newname ?> Your password: <?php echo $newpassword ?><br /> <br /> We need to make sure you are human. Please verify your email and get started using your account.
+
+<a href="http://wsdl-docker.cs.odu:60228/validate.php?id=<?php echo $id; ?>">http://wsdl-docker.cs.odu:60228/validate.php?id=<?php echo $id; ?></a>" ;
+
+</body>
+
+</html>
+
+EOD;
+
 
 	
 	$to = $email;
@@ -99,7 +114,7 @@ if($result1){
 				"from" => 'Mailgun Sandbox <postmaster@sandbox84d0b092e19e41b6857a10c58e584173.mailgun.org>',
 				"to" => "$email",
 				"subject" => "CS418 - Milestone 4 Email Verification",
-				"text" => "Hi <br/> <br/> We need to make sure you are human. Please verify your email and get started using your account. <br/> <br/> <a href=http://wsdl-docker.cs.odu:60228/validate.php?id=<?php echo $id; ?>>http://wsdl-docker.cs.odu:60228/validate.php?id=<?php echo $id; ?></a>"
+				"text" => "$body"
 
 			));
 		$username = "api";
@@ -115,13 +130,13 @@ if($result1){
 
 		$output = curl_exec($ch);
 
-		echo curl_error($ch);
+		//echo curl_error($ch);
 
 	if($output != false){
 		echo $output;
 		echo "done";
 		echo "You registered to this website, make sure to check your email to valiadate your account.";
-		echo "<a href=login.php>return to login page</a>";
+		echo "<a href=index.php>return to main page</a>";
 	}else{
 		echo "There was an error";
 		echo $output;
