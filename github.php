@@ -26,6 +26,10 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 		$json = json_decode($server_output, true);
 
+		$access = $json['access_token'];
+
+		curl_close($ch);
+
 
 		//print_r($json);
 
@@ -37,7 +41,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 			$chn = curl_init();
 			curl_setopt($chn, CURLOPT_URL, "https://api.github.com/user");
 			curl_setopt($chn, CURLOPT_POSTFIELDS, http_build_query(array(
-													'access_token' => $json['access_token']
+													'access_token' => $access
 			
 
 				))
@@ -53,6 +57,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 			print_r($njson);
 
 			echo curl_error($chn);
+
+			curl_close($chn);
 		
 
 	}

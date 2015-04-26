@@ -80,20 +80,20 @@ if($result1){
 	
 
 	$id = $row['id'];
-	//echo $id;
+	echo $id;
 	$_SESSION['id'] = $id;
 	$_SESSION['loggedIn'] = True;
 
 	
 
-$body = <<<EOT
+$body = echo <<<EOT
 <html>
 
 <body>
 
 Hi  "$newname",  Your password:  "$newpassword" <br /> <br /> We need to make sure you are human. Please verify your email and get started using your account.
 
-<a href="http://wsdl-docker.cs.odu.edu:60228/validate.php?id="$id"">http://wsdl-docker.cs.odu.edu:60228/validate.php?id="$id"</a> ;
+<a href="http://wsdl-docker.cs.odu.edu:60228/validate.php?id=$id">http://wsdl-docker.cs.odu.edu:60228/validate.php?id= $id </a> ;
 
 </body>
 
@@ -128,7 +128,7 @@ EOT;
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $postQueryParameters);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-		$output = curl_exec($ch);
+		//$output = curl_exec($ch);
 
 		//echo curl_error($ch);
 
@@ -164,7 +164,7 @@ EOT;
 
 Hi <?php echo $newname ?> Your password: <?php echo $newpassword ?><br /> <br /> We need to make sure you are human. Please verify your email and get started using your account.
 
-<a href="http://wsdl-docker.cs.odu.edu:60228/validate.php?id=<?php echo "$id"; ?>">http://wsdl-docker.cs.odu.edu:60228/validate.php?id=<?php echo "$id"; ?></a> ;
+<a href="http://wsdl-docker.cs.odu.edu:60228/validate.php?id=<?php echo $id; ?>">http://wsdl-docker.cs.odu.edu:60228/validate.php?id=<?php echo $id; ?></a> ;
 
 </body>
 
