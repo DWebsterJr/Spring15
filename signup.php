@@ -106,7 +106,7 @@ EOT;
 	$to = $email;
 	$subject ="Email verification";
 
-	$body=" Hi <br/> <br/> We need to make sure you are human. Please verify your email and get started using your account. <br/> <br/> <a href=validate.php?id=<?php echo $id; ?>http://wsdl-docker.cs.odu:60228/validate.php?id=<?php echo $id; ?></a>" ;
+	
 
 	$postQueryParameters = 
 		http_build_query(array(
