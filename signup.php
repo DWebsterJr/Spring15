@@ -71,7 +71,7 @@ if($result1){
 	session_start();
 
 	$_SESSION['username'] = $newname;
-	$sql2="SELECT id FROM `$tbl_name` WHERE `username` = '".$newname. "'";
+	$sql2="SELECT id FROM `$tbl_name2` WHERE `username` = '".$newname. "'";
 
 	//echo $sql1;
 	$result2=$db->query($sql2);
@@ -83,6 +83,7 @@ if($result1){
 	echo $id;
 	$_SESSION['id'] = $id;
 	$_SESSION['loggedIn'] = True;
+
 
 	
 
@@ -128,7 +129,7 @@ EOT;
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $postQueryParameters);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-		//$output = curl_exec($ch);
+		$output = curl_exec($ch);
 
 		//echo curl_error($ch);
 
@@ -156,16 +157,6 @@ EOT;
 }
 
 
+
 ?>
 
-<html>
-
-<body>
-
-Hi <?php echo $newname ?> Your password: <?php echo $newpassword ?><br /> <br /> We need to make sure you are human. Please verify your email and get started using your account.
-
-<a href="http://wsdl-docker.cs.odu.edu:60228/validate.php?id=<?php echo $id; ?>">http://wsdl-docker.cs.odu.edu:60228/validate.php?id=<?php echo $id; ?></a> ;
-
-</body>
-
-</html>
