@@ -26,10 +26,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 		$json = json_decode($server_output, true);
 
-		$access = $json['access_token'];
-
-		curl_close($ch);
-
+		
+		
 
 		//print_r($json);
 
@@ -37,7 +35,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 			$access = $json['access_token'];
 			$scope = $json['scope'];
-
+/*
 			$chn = curl_init();
 			curl_setopt($chn, CURLOPT_URL, "https://api.github.com/user");
 			curl_setopt($chn, CURLOPT_POSTFIELDS, http_build_query(array(
@@ -47,6 +45,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 				))
 
 			);
+			
 
 			curl_setopt($chn, CURLOPT_HTTPHEADER, array("Accept: appilcation/json"));
 			curl_setopt($chn, CURLOPT_RETURNTRANSFER, true);
@@ -59,9 +58,22 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 			echo curl_error($chn);
 
 			curl_close($chn);
+			*/
 		
 
 	}
+
+	print_r($json);
+	echo $access;
+	echo $scope;
+
+	curl_close($ch);
+
+	
+
+
+
+
 
 	/*$cookie_name = "user"
 	$cookie_value = $json['access_token'];

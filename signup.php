@@ -86,7 +86,7 @@ if($result1){
 
 	
 
-$body = echo <<<EOT
+$body = <<<EOT
 <html>
 
 <body>
