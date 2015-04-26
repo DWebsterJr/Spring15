@@ -86,20 +86,20 @@ if($result1){
 
 	
 
-$body = <<<EOD
+$body = <<<EOT
 <html>
 
 <body>
 
-Hi <?php echo $newname ?> Your password: <?php echo $newpassword ?><br /> <br /> We need to make sure you are human. Please verify your email and get started using your account.
+Hi  "$newname",  Your password:  "$newpassword" <br /> <br /> We need to make sure you are human. Please verify your email and get started using your account.
 
-<a href="http://wsdl-docker.cs.odu:60228/validate.php?id=<?php echo $id; ?>">http://wsdl-docker.cs.odu:60228/validate.php?id=<?php echo $id; ?></a>" ;
+<a href="http://wsdl-docker.cs.odu.edu:60228/validate.php?id="$id"">http://wsdl-docker.cs.odu.edu:60228/validate.php?id="$id"</a> ;
 
 </body>
 
 </html>
 
-EOD;
+EOT;
 
 
 	
@@ -114,7 +114,7 @@ EOD;
 				"from" => 'Mailgun Sandbox <postmaster@sandbox84d0b092e19e41b6857a10c58e584173.mailgun.org>',
 				"to" => "$email",
 				"subject" => "CS418 - Milestone 4 Email Verification",
-				"text" => "$body"
+				"html" => "$body"
 
 			));
 		$username = "api";
@@ -158,3 +158,14 @@ EOD;
 
 ?>
 
+<html>
+
+<body>
+
+Hi <?php echo $newname ?> Your password: <?php echo $newpassword ?><br /> <br /> We need to make sure you are human. Please verify your email and get started using your account.
+
+<a href="http://wsdl-docker.cs.odu.edu:60228/validate.php?id=<?php echo "$id"; ?>">http://wsdl-docker.cs.odu.edu:60228/validate.php?id=<?php echo "$id"; ?></a> ;
+
+</body>
+
+</html>
