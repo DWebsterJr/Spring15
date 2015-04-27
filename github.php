@@ -38,6 +38,10 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	echo $access;
 	echo $scope;
 
+	$name = $_COOKIE['dotcom_user'];
+
+	echo $name;
+
 
 		//print_r($json);
 
@@ -69,6 +73,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 			curl_close($ch);
 			
+
 		
 	}
 
