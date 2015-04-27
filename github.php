@@ -25,17 +25,27 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		curl_close($ch);
 
 		$json = json_decode($server_output, true);
+	
 
-		
-		
+
+			$access = $json['access_token'];
+			$scope = $json['scope'];
+
+	
+	curl_close($ch);
+
+		print_r($json);
+	echo $access;
+	echo $scope;
+
 
 		//print_r($json);
 
 		//echo curl_error($ch);
 
-			$access = $json['access_token'];
-			$scope = $json['scope'];
-/*
+		
+
+
 			$chn = curl_init();
 			curl_setopt($chn, CURLOPT_URL, "https://api.github.com/user");
 			curl_setopt($chn, CURLOPT_POSTFIELDS, http_build_query(array(
@@ -58,16 +68,12 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 			echo curl_error($chn);
 
 			curl_close($chn);
-			*/
+			
 		
-
 	}
 
-	print_r($json);
-	echo $access;
-	echo $scope;
 
-	curl_close($ch);
+
 
 	
 
