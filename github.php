@@ -46,9 +46,9 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		
 
 
-			$chn = curl_init();
-			curl_setopt($chn, CURLOPT_URL, "https://api.github.com/user");
-			curl_setopt($chn, CURLOPT_POSTFIELDS, http_build_query(array(
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, "https://api.github.com/user");
+			curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
 													'access_token' => $access
 			
 
@@ -57,17 +57,17 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 			);
 			
 
-			curl_setopt($chn, CURLOPT_HTTPHEADER, array("Accept: appilcation/json"));
-			curl_setopt($chn, CURLOPT_RETURNTRANSFER, true);
-			$serverpt = curl_exec($chn);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: appilcation/json"));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			$serverpt = curl_exec($ch);
 
 			$njson = json_decode($serverpt, true);
 
 			print_r($njson);
 
-			echo curl_error($chn);
+			echo curl_error($ch);
 
-			curl_close($chn);
+			curl_close($ch);
 			
 		
 	}
