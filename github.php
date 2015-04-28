@@ -47,8 +47,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	curl_close($ch);
 
 		//print_r($json);
-	//echo $access;
-	//echo $scope;
+	echo $access;
+	echo $scope;
 
 	$name = $_COOKIE['dotcom_user'];
 
@@ -165,16 +165,9 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 	}
 
-	else{
-		echo "<img width = '50' height = '50' src=" '.$avatar.'" alt= 'Profile Pic'>";
-	}
-
-	if($email = ""){
-
-	}
+	
 	?>
-
-
+	
 
 
 </div>
