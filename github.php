@@ -83,6 +83,12 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 		$email = $njson['email'];
 
+		echo $user;
+
+		echo $avatar;
+
+
+		echo $email;
 
 
 
@@ -109,6 +115,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		//echo "done echoing";
 
 		print_r($newjson);
+
+		curl_close($ch3);
 
 
 
