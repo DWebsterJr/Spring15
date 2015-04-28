@@ -117,12 +117,12 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 
-
+/*
 	$cookie_name = "user"
 	$cookie_value = $access;
 	setcookie($cookie_name, $cookie_value, time()+(86400*30), "/");
 
-	
+	*/
 
 
 //curl_close($ch);
