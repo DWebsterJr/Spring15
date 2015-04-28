@@ -123,14 +123,14 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 	//var_dump(parse_url($avatar));
+	var_dump(parse_url($avatar, PHP_URL_PATH));
 
-	$path = parse_url($avatar, PHP_URL_PATH);
+
+	$path = explode('/', var_dump(parse_url($avatar, PHP_URL_PATH)));
 
 
-	echo $path;
 
-	
-
+	//echo $path;
 
 
 	
