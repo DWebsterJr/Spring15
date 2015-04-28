@@ -50,8 +50,9 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		
 
 
-			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, "https://api.github.com/user");
+			$ch2 = curl_init();
+			curl_setopt($ch2, CURLOPT_URL, "https://api.github.com/user?access_token=".$access);
+			/*curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
 													'access_token' => $access
 			
@@ -59,19 +60,19 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 				))
 
 			);
-			
+			*/
 
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: appilcation/json"));
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			$serverpt = curl_exec($ch);
+			curl_setopt($ch2, CURLOPT_HTTPHEADER, array("Accept: application/json", "User Agent: DWebsterJr"));
+			curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+			$serverpt = curl_exec($ch2);
 
 			$njson = json_decode($serverpt, true);
 
 			print_r($njson);
 
-			echo curl_error($ch);
+			echo curl_error($ch2);
 
-			curl_close($ch);
+			curl_close($ch2);
 			
 
 		
