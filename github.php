@@ -160,7 +160,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	$num = 0;
 
 
-	if($avatar = ""  || $num == 0){
+	if($avatar = ""){
 		echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
 
 	}
