@@ -62,21 +62,24 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 			);
 			*/
 
-echo "https://api.github.com/user?access_token=".$access;
+//echo "https://api.github.com/user?access_token=".$access;
 
-			curl_setopt($ch2, CURLOPT_HTTPHEADER, array("Accept: application/json", "User Agent: DWebsterJr"));
+			curl_setopt($ch2, CURLOPT_HTTPHEADER, array("Accept: application/json", "User-Agent: DWebsterJr"));
 			curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
 			$serverpt = curl_exec($ch2);
-
+//echo $serverpt;
 			$njson = json_decode($serverpt, true);
 
-			
+		//echo $njson;
+		//echo "done echoing";
+
+		print_r($njson);
 
 			echo curl_error($ch2);
 			
 			curl_close($ch2);
 
-			print_r($njson);
+			//echo "done";
 
 
 		
