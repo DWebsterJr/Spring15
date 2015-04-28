@@ -131,9 +131,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 	$paths = explode('/', $path);
 
-	echo $paths[0];
-
-	echo $paths[1];
+	var_dump(explode('/', $path));
+	
 
 
 	
