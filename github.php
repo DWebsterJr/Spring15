@@ -122,6 +122,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 
+	var_dump(parse_url($avatar));
+
 	
 
 
