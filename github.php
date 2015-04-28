@@ -3,6 +3,7 @@
 $clientId="725e08a43209c83e9833";
 $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
+
 	if(isset($_GET['code'])){
 
 		$ch = curl_init();
@@ -35,8 +36,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	curl_close($ch);
 
 		print_r($json);
-	echo $access;
-	echo $scope;
+	//echo $access;
+	//echo $scope;
 
 	$name = $_COOKIE['dotcom_user'];
 
@@ -75,11 +76,40 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 		print_r($njson);
 
+
+		$user = $njson['login'];
+
+		$avatar = $njson['avatar_url'];
+
+		$email = $njson['email'];
+
+
+
+
+
+
 			echo curl_error($ch2);
 			
 			curl_close($ch2);
 
 			//echo "done";
+
+
+
+			$ch3 = curl_init();
+			curl_setopt($ch3, CURLOPT_URL, "https://api.github.com/gist?access_token=".$access);
+			
+			curl_setopt($ch3, CURLOPT_HTTPHEADER, array("Accept: application/json", "User-Agent: DWebsterJr"));
+			curl_setopt($ch3, CURLOPT_RETURNTRANSFER, true);
+			$serveropt = curl_exec($ch3);
+//echo $serverpt;
+			$newjson = json_decode($serveropt, true);
+
+		//echo $njson;
+		//echo "done echoing";
+
+		print_r($newjson);
+
 
 
 		
@@ -94,11 +124,11 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 
-	/*$cookie_name = "user"
-	$cookie_value = $json['access_token'];
+	$cookie_name = "user"
+	$cookie_value = $access;
 	setcookie($cookie_name, $cookie_value, time()+(86400*30), "/");
 
-	*/
+	
 
 
 //curl_close($ch);
