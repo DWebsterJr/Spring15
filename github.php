@@ -165,9 +165,17 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 	}
 
+	else{
+		?>
+
+		<img width='50' height='50' src="<?php echo $avatar ?>" alt="Avatar">
+
+<?php
+	}
+
 	
 	?>
-	
+
 
 
 </div>
