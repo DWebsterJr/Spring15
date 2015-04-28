@@ -146,6 +146,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 <title> Ask 4Gamers: an Ask site for gamers</title>
 <meta charset="UTF-8">
 <script src="script.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
 
@@ -164,7 +166,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	}
 
 	else{
-		echo "<img width = '50' height = '50' src=" .$avatar . "alt= 'Profile Pic'>";
+		echo "<img width = '50' height = '50' src=" '.$avatar.'" alt= 'Profile Pic'>";
 	}
 
 	if($email = ""){
