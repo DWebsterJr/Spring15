@@ -1,5 +1,16 @@
 <?php
 
+include_once "creds.php";
+
+
+$tbl_name="question";
+$tbl_name2="user";
+$tbl_name3="answer";
+
+
+$db = new mysqli($host, $user,$pw,$db_name);// or die (mysql_error());
+//$username=$_POST['username'];
+
 $clientId="725e08a43209c83e9833";
 $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
@@ -35,7 +46,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	
 	curl_close($ch);
 
-		print_r($json);
+		//print_r($json);
 	//echo $access;
 	//echo $scope;
 
@@ -74,7 +85,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		//echo $njson;
 		//echo "done echoing";
 
-		print_r($njson);
+		//print_r($njson);
 
 
 		$user = $njson['login'];
@@ -102,22 +113,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 
-			$ch3 = curl_init();
-			curl_setopt($ch3, CURLOPT_URL, "https://api.github.com/user:email?access_token=".$access);
 			
-			curl_setopt($ch3, CURLOPT_HTTPHEADER, array("Accept: application/json", "User-Agent: DWebsterJr"));
-			curl_setopt($ch3, CURLOPT_RETURNTRANSFER, true);
-			$serveropt = curl_exec($ch3);
-//echo $serverpt;
-			$newjson = json_decode($serveropt, true);
-
-		//echo $njson;
-		//echo "done echoing";
-
-		print_r($newjson);
-
-		curl_close($ch3);
-
 
 
 		
@@ -143,3 +139,49 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title> Ask 4Gamers: an Ask site for gamers</title>
+<meta charset="UTF-8">
+<script src="script.js"></script>
+</head>
+<body>
+
+<div class = "user">
+
+	<strong>Welcome, </strong>
+
+	<?php echo $user; 
+
+	$num = 0;
+
+
+	if($avatar = ""){
+		echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
+
+	}
+
+	else{
+		echo "<img width = '50' height = '50' src=" .$avatar . "alt= 'Profile Pic'>";
+	}
+
+	if($email = ""){
+
+	}
+	?>
+
+
+
+
+</div>
+
+
+
+
+
+</body>
+
+
+</html>
