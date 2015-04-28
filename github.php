@@ -103,7 +103,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 			$ch3 = curl_init();
-			curl_setopt($ch3, CURLOPT_URL, "https://api.github.com/gist?access_token=".$access);
+			curl_setopt($ch3, CURLOPT_URL, "https://api.github.com/user:email?access_token=".$access);
 			
 			curl_setopt($ch3, CURLOPT_HTTPHEADER, array("Accept: application/json", "User-Agent: DWebsterJr"));
 			curl_setopt($ch3, CURLOPT_RETURNTRANSFER, true);
