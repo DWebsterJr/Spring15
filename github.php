@@ -123,11 +123,12 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 	//var_dump(parse_url($avatar));
-	var_dump(parse_url($avatar, PHP_URL_PATH));
+	//var_dump(parse_url($avatar, PHP_URL_PATH));
 
 
-	$path = explode('/', var_dump(parse_url($avatar, PHP_URL_PATH)));
+	$path = var_dump(parse_url($avatar, PHP_URL_PATH)));
 
+	$path = $path + ".png";
 
 
 	//echo $path;
@@ -172,7 +173,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	$num = 0;
 
 
-	if($avatar = ""){
+	if($avatar == ""){
 		echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
 
 	}
