@@ -93,7 +93,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		$avatar = $njson['avatar_url'];
 
 		$email = $njson['email'];
-
+/*
 		echo $user;
 
 		echo $avatar;
@@ -103,7 +103,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 
-
+*/
 
 			echo curl_error($ch2);
 			
@@ -181,7 +181,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	else{
 		?>
 
-		echo "<img width='50' height='50' src="<?php echo $avatar; ?>" alt="Avatar">
+		<img width='50' height='50' src="<?php echo $avatar; ?>" alt="Avatar">
 
 <?php
 	}
