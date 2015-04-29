@@ -100,8 +100,8 @@ document.getElementById("signinWithGithub").onclick = function(){
 </form>
 </div>
 
-<div class="olduser">
-
+<div class="git">
+<header> Sign in through Github? Click this button</header>
 	<button onclick="Git()" id="gitButton">Sign in with Github</button>
 
 	</div>

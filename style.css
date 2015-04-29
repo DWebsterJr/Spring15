@@ -109,7 +109,7 @@ text-align: center;
 .login{
 	display: table;
 	border-collapse: collapse;
-	width: 80%;
+	width: 40%;
 	height: 50%;
 	background-color: palegoldenrod;
 	border: 1px solid green;
@@ -119,13 +119,14 @@ text-align: center;
 	padding: 50px;
 	box-shadow: 10px 10px 5px #888888;
 	font-weight: bold;
+	display: flex;
 
 }
 
 
 .olduser{
 display: table;
-
+width: 200px;
 
 
 
@@ -133,7 +134,14 @@ display: table;
 
 .newuser{
 display: table;
+width: 100px;
 
+}
+
+.git{
+	display: table;
+width: 1000px;
+	
 }
 
 
