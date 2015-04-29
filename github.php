@@ -126,9 +126,9 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	//var_dump(parse_url($avatar, PHP_URL_PATH));
 
 
-	$path = var_dump(parse_url($avatar, PHP_URL_PATH)));
+	//$path = var_dump(parse_url($avatar, PHP_URL_PATH)));
 
-	$path = $path + ".png";
+	//$path = $path + ".png";
 
 
 	//echo $path;
