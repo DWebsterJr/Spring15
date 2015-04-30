@@ -11,6 +11,7 @@ $tbl_name3="answer";
 $db = new mysqli($host, $user,$pw,$db_name);// or die (mysql_error());
 //$username=$_POST['username'];
 
+session_start();
 $clientId="725e08a43209c83e9833";
 $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
@@ -85,9 +86,10 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		//echo $njson;
 		//echo "done echoing";
 
-		//print_r($njson);
+		print_r($njson);
 
 
+		$id = $njson['id'];
 		$user = $njson['login'];
 
 		$avatar = $njson['avatar_url'];
@@ -149,7 +151,12 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 //curl_close($ch);
+$_SESSION['id'] = $id;
 
+$_SESSION['name'] = $user;
+$_SESSION['avatar'] = $avatar;
+$_SESSION['email'] = $email;
+	$_SESSION['loggedIn'] = True;
 
 ?>
 
@@ -189,6 +196,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 <?php
 	}
 
+
+
 	
 	?>
 
@@ -203,7 +212,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	<ul id="content"></ul>
 </div>
 
-
+<a href="create.php"><strong>Create New Topic</strong> </a>
 
 </body>
 

@@ -28,12 +28,29 @@ $roname=mysqli_fetch_array($rname);
 $login = $_SESSION['username'];
 
 if(isset($_POST['submit'])){
-	move_uploaded_file(($_FILES['file']['tmp_name']), "Pictures/".$_FILES['file']['name']);
+
+	if(empty($_FILES['file']['tmp_name'])){
+		//echo "no file";
+		$empty = '';
+
+		//echo $empty;
+		$dq = "UPDATE `$tbl_name2` SET picture = '$empty' WHERE username = '".$_SESSION['username']."'";
+		//echo $dq;
+		$defres=$db->query($dq);
+		//echo $defres;
+
+	}
+	else{
+	move_uploaded_file(($_FILES['file']['tmp_name']), "Pictures/" .$_FILES['file']['name']);
 	$nq = "UPDATE `$tbl_name2` SET picture = '".$_FILES['file']['name']."' WHERE username = '".$_SESSION['username']."'";
 
 	$ress=$db->query($nq);
         }
+    }
 
+
+
+	
 
 ?>
 
@@ -94,7 +111,9 @@ if(isset($_POST['submit'])){
 	else{
 		echo"<img width='30' height='30' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
 	}
-?>  
+?>
+
+	
 	<strong>Welcome, </strong>
 <?php
 
@@ -139,12 +158,52 @@ if( $roname['username'] == $_SESSION['username']){
 <div class="table">
 <form action = "" method="post" enctype="multipart/form-data">
 	<input type = "file" name="file">
-	<input type="submit" name="submit" value="Upload">
-	<a href="create.php"><strong>Create New Topic</strong> </a>
+	<input type="submit" id="submit" name="submit" value="Upload">
+	
+
 </form>
+<?php
+
+$mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
+
+	$rese = $db->query($mail);
+	$email = mysqli_fetch_array($rese);
+
+	if($email['email'] != ""){
+
+		$em = $email['email'];
+
+		echo md5( strtolower(trim($em)));
+
+		$Hash = md5( strtolower(trim($em)));
+
+		$newavatar = " http://www.gravatar.com/avatar/" ;
+
+		$newavatar .= $Hash;
+
+		?>
+		<form action="" method="post" name="new_image" >
+			<input type = "file" name="file" value="<?php echo $newavatar ?>">
+			<input type="submit" name="new" value="New image">
+		<img width='50' height='50' src="<?php echo $newavatar; ?>" alt="GrAvatar">
+	
+		<?php
+
+	}
+
+	else{
+			echo "<img width='50' height = '50' src='http://www.gravatar.com/avatar/00000000000000000000000000000000' alt='Default Profile Pic'>";
+	}
+?>  
+
+
+	<a href="create.php"><strong>Create New Topic</strong> </a>
+
 </div>
 
 <?php
+
+
 
 }
 ?>
