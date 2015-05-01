@@ -27,6 +27,13 @@ $roname=mysqli_fetch_array($rname);
 
 $login = $_SESSION['username'];
 
+if(isset($_POST['action'])){
+
+		echo $_POST['submit'];
+	}
+
+
+
 if(isset($_POST['submit'])== 'Upload'){
 
 	if(empty($_FILES['file']['tmp_name'])){
@@ -233,6 +240,8 @@ $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 
 	$rese = $db->query($mail);
 	$email = mysqli_fetch_array($rese);
+
+
 
 	if($email['email'] != ""){
 
