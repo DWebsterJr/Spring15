@@ -44,9 +44,21 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 			$access = $json['access_token'];
 			$scope = $json['scope'];
 
+
+
+
 	
 	curl_close($ch);
 
+
+	
+$token = "SELECT access FROM `$tbl_name2` WHERE `access` = '".$access_token. "'";
+
+			echo $token;
+
+			$res = $db->query($token);
+
+			echo $res;
 		//print_r($json);
 	//echo $access;
 	//echo $scope;
@@ -60,7 +72,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 		//echo curl_error($ch);
 
-	
+
 
 	
 		$ch2 = curl_init();
@@ -110,7 +122,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		
 */
 		$valid = 1;
-			$sql="INSERT INTO `$tbl_name2` (`username`, `email`,`validate`, `access`, `gitpic`) VALUES ('$user', '$email', '$valid', '$access_token', '$avatar')";
+			$sql="INSERT INTO `$tbl_name2` (`username`, `email`,`validate`, `access`, `gitpic`) VALUES ('$user', '$email', '$valid', '$access', '$avatar')";
 
 echo $valid;
 
