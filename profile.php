@@ -38,13 +38,17 @@ if(isset($_POST['submit'])== 'Upload'){
 		//echo $dq;
 		$defres=$db->query($dq);
 		//echo $defres;
-
+	$gq="UPDATE `$tbl_name2` SET gravatar = '$empty' WHERE username = '".$_SESSION['username']."'";
+	$gres = $db->query($gq);
 	}
 	else{
 	move_uploaded_file(($_FILES['file']['tmp_name']), "Pictures/" .$_FILES['file']['name']);
 	$nq = "UPDATE `$tbl_name2` SET picture = '".$_FILES['file']['name']."' WHERE username = '".$_SESSION['username']."'";
 
 	$ress=$db->query($nq);
+
+
+"
         }
     }
 
@@ -239,12 +243,12 @@ $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 
 		$newavatar = " http://www.gravatar.com/avatar/" ;
 
-		$newavatar =  $newavatar . ' ' .$Hash;
+		$newavatar =  $newavatar. '' .$Hash;
 
 		?>
 		
 			<input type = "text" name="file" id="file" value="<?php echo $newavatar?>">
-			<input type="submit" name="submit" id="submit"value="Gravatar">
+			<input type="submit" name="submit" id="submit" value="Gravatar">
 		<img width='50' height='50' src="<?php echo $newavatar; ?>" alt="GrAvatar">
 	
 		<?php
