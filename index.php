@@ -97,18 +97,18 @@ $row=mysqli_fetch_array($results);
 		$respic = $db->query($sqlpic);
 		$rpic = mysqli_fetch_array($respic);
 
-			if($rpic['picture'] == "" ){
+			if($rpic['picture'] == "" && $rpic['gitpic'] == " " ){
 				echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
 				}
-				else if($rpic['gitpic'] != ""){
-		?>
-		 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
-		 <?php
 	}
-				else{
+				else if($rpic['access'] == ""){
 					echo"<img width='50' height='50' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
 					}
-		?>  
+		  
+				else{
+		?>
+		 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
+		 
 		(<a href="index.php?action=logout">log out</a>)</td>
 </div>
 		
