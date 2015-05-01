@@ -53,7 +53,7 @@ if(isset($_POST['submit'])== 'Upload'){
         }
     }
 
-    if(isset($_POST['submit']) == 'Grav'){
+   else if(isset($_POST['submit']) == 'Grav'){
 
     	echo "Grav";
 
@@ -67,7 +67,7 @@ if(isset($_POST['submit'])== 'Upload'){
 
     	echo $gresult;
     }
-    if(isset($_POST['submit']) == 'Gravatar'){
+   else if(isset($_POST['submit']) == 'Gravatar'){
 
     	echo "Gravatar";
 
