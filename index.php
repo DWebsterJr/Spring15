@@ -97,11 +97,11 @@ $row=mysqli_fetch_array($results);
 		$respic = $db->query($sqlpic);
 		$rpic = mysqli_fetch_array($respic);
 
-			if($rpic['picture'] == "" && $rpic['gitpic'] == "" ){
+			if($rpic['picture'] == "" || $rpic['gitpic'] == "" ){
 				echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
 				}
 	
-			if($rpic['access'] == ""){
+			else if($rpic['access'] == ""){
 					echo"<img width='50' height='50' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
 					}
 		  

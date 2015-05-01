@@ -63,24 +63,7 @@ $token = "SELECT access FROM `$tbl_name2` WHERE `access` = '".$access. "'";
 			if($res == 0 ){
 
 				echo " not Found";
-			}
-		//print_r($json);
-	//echo $access;
-	//echo $scope;
-
-	//$name = $_COOKIE['dotcom_user'];
-
-	//echo $name;
-
-
-		//print_r($json);
-
-		//echo curl_error($ch);
-
-
-
-	
-		$ch2 = curl_init();
+$ch2 = curl_init();
 			curl_setopt($ch2, CURLOPT_URL, "https://api.github.com/user?access_token=".$access);
 			/*curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
@@ -144,6 +127,7 @@ echo $result;
 			
 			curl_close($ch2);
 
+
 	$sqlid1 = "SELECT * FROM `$tbl_name2` WHERE `access` =  '".$access. "'";
 
 		$idres1=$db->query($sqlid1);
@@ -153,6 +137,103 @@ echo $result;
 		$_SESSION['id'] = $idrow1['id'];
 
 		$_SESSION['loggedIn'] = True;
+
+
+			}
+		//print_r($json);
+	//echo $access;
+	//echo $scope;
+
+	//$name = $_COOKIE['dotcom_user'];
+
+	//echo $name;
+
+
+		//print_r($json);
+
+		//echo curl_error($ch);
+
+
+/*
+	
+		$ch2 = curl_init();
+			curl_setopt($ch2, CURLOPT_URL, "https://api.github.com/user?access_token=".$access);
+			/*curl_setopt($ch, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
+													'access_token' => $access
+			
+
+				))
+
+			);
+			
+
+//echo "https://api.github.com/user?access_token=".$access;
+
+			curl_setopt($ch2, CURLOPT_HTTPHEADER, array("Accept: application/json", "User-Agent: DWebsterJr"));
+			curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+			$serverpt = curl_exec($ch2);
+//echo $serverpt;
+			$njson = json_decode($serverpt, true);
+
+		//echo $njson;
+		//echo "done echoing";
+
+		//print_r($njson);
+
+
+		$id = $njson['id'];
+		$user = $njson['login'];
+
+		$_SESSION['username'] = $user;
+
+		$avatar = $njson['avatar_url'];
+
+		$email = $njson['email'];
+
+		echo $user;
+
+		echo $avatar;
+
+
+		echo $email;
+		$
+
+	
+		
+
+		$valid = 1;
+			$sql="INSERT INTO `$tbl_name2` (`username`, `email`,`validate`, `access`, `gitpic`) VALUES ('$user', '$email', '$valid', '$access', '$avatar')";
+
+echo $valid;
+
+echo $sql;
+			$result=$db->query($sql);
+
+echo $result;
+
+
+
+			//$sql1="INSERT INTO `$tbl_name2` (`username`,`password`, `email`)VALUES('$newname', '$newpassword', '$email')";
+
+			echo curl_error($ch2);
+			
+			curl_close($ch2);
+			*/
+			else{
+
+				$sqlid1 = "SELECT * FROM `$tbl_name2` WHERE `access` =  '".$access. "'";
+
+		$idres1=$db->query($sqlid1);
+
+		$idrow1 = mysqli_fetch_array($idres1);
+
+		$_SESSION['id'] = $idrow1['id'];
+
+		$_SESSION['loggedIn'] = True;
+			}
+
+	
 
 		
 
