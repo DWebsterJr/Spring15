@@ -74,7 +74,14 @@ if(isset($_POST['upload'])){
 
     	echo "Gravatar";
 
-    	echo $_POST['file'];
+    	$gravatar1 = "UPDATE `$tbl_name2` SET gravatar = '".$_POST['file']."' WHERE username = '".$_SESSION['username']."'";
+
+    	//echo $gravatar;
+
+    	$gresult1=$db->query($gravatar1);
+
+
+    	//echo $_POST['file'];
     }
 
 
