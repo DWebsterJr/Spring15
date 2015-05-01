@@ -161,6 +161,22 @@ echo $result;
 	
 		
 	
+	$sqlpic="SELECT * FROM `$tbl_name2` WHERE `access` =  '".$access. "'";
+
+	echo $sqlpic;
+
+	$respic = $db->query($sqlpic);
+
+	$row = mysqli_fetch_array($respic){
+
+		if($row['gitpic'] == ''){
+			echo "empty";
+		}
+
+		else{
+			echo $row['gitpic'];
+		}
+	}
 	}
 
 
@@ -236,22 +252,6 @@ echo $result;
 	}
 
 
-	$sqlpic="SELECT * FROM `$tbl_name2` WHERE `access` =  '".$access. "'";
-
-	echo $sqlpic;
-
-	$respic = $db->query($sqlpic);
-
-	$row = mysqli_fetch_array($respic){
-
-		if($row['gitpic'] == ''){
-			echo "empty";
-		}
-
-		else{
-			echo $row['gitpic'];
-		}
-	}
 	
 	?>
 
