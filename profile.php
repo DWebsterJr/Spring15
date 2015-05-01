@@ -48,7 +48,7 @@ if(isset($_POST['submit'])== 'Submit'){
         }
     }
 
-    if(isset($_POST['submit']) == 'Gravatar'){
+    else if(isset($_POST['submit']) == 'Gravatar'){
 
     	echo "GrAvatar";
 
@@ -226,7 +226,7 @@ $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 	else{
 			echo "<img width='50' height = '50' src='http://www.gravatar.com/avatar/00000000000000000000000000000000' alt='Default Profile Pic'>";
 ?>
-			<input type="text" name="avatar" id="gra" value="http://www.gravatar.com/avatar/00000000000000000000000000000000">
+			<input type="text" name="gra" id="gra" value="http://www.gravatar.com/avatar/00000000000000000000000000000000">
 			<input type="submit" name="submit" id="submit" value="Grav">
 
 		</form>
