@@ -40,7 +40,7 @@ $uname = $_SESSION['username'];
 
 	$row=mysqli_fetch_array($results);
 
-	$sqlpic ="SELECT picture FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
+	$sqlpic ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 
 	//echo $sqlpic;
 
@@ -50,6 +50,11 @@ $uname = $_SESSION['username'];
 	if($rpic['picture'] == "" ){
 		echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
 
+	}
+	else if($rpic['gitpic'] != ""){
+		?>
+		 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
+		 <?php
 	}
 	else{
 		echo"<img width='50' height='50' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";

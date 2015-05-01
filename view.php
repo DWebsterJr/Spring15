@@ -60,7 +60,7 @@ $login = $_SESSION['username'];
 
 	$uid=$row['id'];
 
-	$sqlpic ="SELECT picture FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
+	$sqlpic ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 
 	//echo $sqlpic;
 
@@ -70,6 +70,11 @@ $login = $_SESSION['username'];
 	if($rpic['picture'] == "" ){
 		echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
 
+	}
+	else if($rpic['gitpic'] != ""){
+		?>
+		 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
+		 <?php
 	}
 	else{
 		echo"<img width='50' height='50' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
@@ -153,7 +158,7 @@ if($adrow['admin'] == 1){
 
 	<?php
 	
-	$sqlpicture = "SELECT picture FROM `$tbl_name2` WHERE `id` =$number";
+	$sqlpicture = "SELECT * FROM `$tbl_name2` WHERE `id` =$number";
 
 	//echo $sqlpicture; 
 
@@ -164,6 +169,12 @@ if($adrow['admin'] == 1){
 		echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
 
 	}
+	else if($rpic['gitpic'] != ""){
+		?>
+		 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
+		 <?php
+	}
+
 	else{
 		echo"<img width='50' height='50' src='Pictures/".$picrow['picture']."' alt=Profile Pic'>";
 	}
@@ -218,8 +229,10 @@ $a_name="Anon";
 			
 			<strong>Name</strong>:
 			<a href="profile.php?id=<?php echo $roww['id']; ?>"><?php echo $a_name; ?></a>
+
 			<?php
-				$sqlpicture = "SELECT picture FROM `$tbl_name2` WHERE `id` =$num";
+			echo $roww['score'];
+				$sqlpicture = "SELECT * FROM `$tbl_name2` WHERE `id` =$num";
 
 				//echo $sqlpicture; 
 
@@ -230,6 +243,11 @@ $a_name="Anon";
 					echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
 
 					}
+					else if($rpic['gitpic'] != ""){
+		?>
+		 <img width='50' height='50' src="<?php echo $picrow['gitpic']; ?>" alt="Avatar">
+		 <?php
+	}
 					else{
 					echo"<img width='50' height='50' src='Pictures/".$picrow['picture']."' alt=Profile Pic'>";
 					}
@@ -277,7 +295,7 @@ if($adrow['validate']== 1){
 
 	
 			<?php
-			}
+		}
 			$like= $rows['a_id'];
 			if($_SESSION['username'] == $name && $rows['like'] == 0){
 				?>

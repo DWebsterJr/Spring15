@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2015 at 08:32 PM
+-- Generation Time: May 01, 2015 at 01:01 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -160,31 +160,32 @@ CREATE TABLE IF NOT EXISTS `user` (
   `admin` int(11) NOT NULL DEFAULT '0',
   `picture` longtext NOT NULL,
   `score` int(11) NOT NULL DEFAULT '0',
-  `q` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+  `q` int(11) NOT NULL DEFAULT '0',
+  `access` longtext NOT NULL,
+  `gitpic` longtext NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `validate`, `admin`, `picture`, `score`, `q`) VALUES
-(1, 'pallen', 'm$ftw', '', 1, 1, 'rabbit.jpg', -51, 2),
-(2, 'tblee', '0mGth3WeB!', '', 1, 0, '', 0, 1),
-(3, 'bourne', 'bash_$', '', 1, 0, 'biohazard.jpg', 0, 0),
-(4, 'edsger', 'st1ll1l11lG0O2', '', 1, 0, '', 0, 0),
-(5, 'wgates', '5il3M4X_m$4L', '', 1, 0, 'SEGA.jpg', 0, 0),
-(6, 'hopper', 'im4usn', '', 1, 0, '', 0, 0),
-(7, 'dknuth', 'tek!tex', '', 1, 0, 'dragonshield.png', 22, 2),
-(8, 'ada', 'wtf15b4b', '', 1, 0, '', 0, 0),
-(9, 'cmoore', 'moreM00R3!', '', 1, 0, 'HighDragon.jpg', 0, 0),
-(10, 'jresig', 'In0JS', '', 1, 0, '', 0, 0),
-(11, 'atanen', 'minix!minix', '', 1, 0, 'J&H.jpg', 0, 0),
-(12, 'linus', 'ilUvP3nGu1n5', '', 1, 0, 'XBOXOne.jpg', 0, 0),
-(13, 'aturing', '1nfin1t3TAp3', '', 1, 0, '', 0, 0),
-(14, 'lwall', 'oysters&camels', '', 1, 0, 'The_Mario_Bros..jpeg', 0, 0),
-(15, 'thewoz', '4daK1d5', '', 1, 0, '', 0, 0),
-(16, 'bwayne', 'bman', '', 1, 1, 'batman.jpg', 2, 5),
-(17, 'seakin97', 'qtf', 'htmgtrnp@sharklasers.com', 0, 0, '', 0, 0);
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `validate`, `admin`, `picture`, `score`, `q`, `access`, `gitpic`) VALUES
+(1, 'pallen', 'm$ftw', '', 1, 1, 'rabbit.jpg', -51, 2, '', ''),
+(2, 'tblee', '0mGth3WeB!', '', 1, 0, '', 0, 1, '', ''),
+(3, 'bourne', 'bash_$', '', 1, 0, 'biohazard.jpg', 0, 0, '', ''),
+(4, 'edsger', 'st1ll1l11lG0O2', '', 1, 0, '', 0, 0, '', ''),
+(5, 'wgates', '5il3M4X_m$4L', '', 1, 0, 'SEGA.jpg', 0, 0, '', ''),
+(6, 'hopper', 'im4usn', '', 1, 0, '', 0, 0, '', ''),
+(7, 'dknuth', 'tek!tex', '', 1, 0, 'dragonshield.png', 22, 2, '', ''),
+(8, 'ada', 'wtf15b4b', '', 1, 0, '', 0, 0, '', ''),
+(9, 'cmoore', 'moreM00R3!', '', 1, 0, 'HighDragon.jpg', 0, 0, '', ''),
+(10, 'jresig', 'In0JS', '', 1, 0, '', 0, 0, '', ''),
+(11, 'atanen', 'minix!minix', '', 1, 0, 'J&H.jpg', 0, 0, '', ''),
+(12, 'linus', 'ilUvP3nGu1n5', '', 1, 0, 'XBOXOne.jpg', 0, 0, '', ''),
+(13, 'aturing', '1nfin1t3TAp3', '', 1, 0, '', 0, 0, '', ''),
+(14, 'lwall', 'oysters&camels', '', 1, 0, 'The_Mario_Bros..jpeg', 0, 0, '', ''),
+(15, 'thewoz', '4daK1d5', '', 1, 0, '', 0, 0, '', ''),
+(16, 'bwayne', 'bman', '', 1, 1, 'batman.jpg', 2, 4, '', '');
 
 -- --------------------------------------------------------
 
@@ -312,7 +313,7 @@ MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

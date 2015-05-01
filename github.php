@@ -51,7 +51,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	//echo $access;
 	//echo $scope;
 
-	$name = $_COOKIE['dotcom_user'];
+	//$name = $_COOKIE['dotcom_user'];
 
 	//echo $name;
 
@@ -60,10 +60,13 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 		//echo curl_error($ch);
 
-		
+	$acessto="SELECT access FROM `$tbl_name2` WHERE `access` =  '".$access_token. "'";
 
+	$resultto = $db->query($acessto);
 
-			$ch2 = curl_init();
+	if($resultto == 0){
+
+		$ch2 = curl_init();
 			curl_setopt($ch2, CURLOPT_URL, "https://api.github.com/user?access_token=".$access);
 			/*curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
@@ -92,6 +95,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		$id = $njson['id'];
 		$user = $njson['login'];
 
+		$_SESSION['username'] = $user;
+
 		$avatar = $njson['avatar_url'];
 
 		$email = $njson['email'];
@@ -102,23 +107,57 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 		echo $email;
+		$
 
-
-
+	
+		
 */
+		$valid = 1;
+			$sql="INSERT INTO `$tbl_name2` (`username`, `email`,`validate`, `access`, `gitpic`) VALUES ('$user', '$email', '$valid', '$access_token', '$avatar')";
+
+			$result=$db->query($sql);
+
+			//$sql1="INSERT INTO `$tbl_name2` (`username`,`password`, `email`)VALUES('$newname', '$newpassword', '$email')";
 
 			echo curl_error($ch2);
 			
 			curl_close($ch2);
 
+	$sqlid1 = "SELECT * FROM `$tbl_name2` WHERE `access` =  '".$access_token. "'";
+
+		$idres1=$db->query($sqlid1);
+
+		$idrow1 = mysqli_fetch_array($idres1);
+
+		$_SESSION['id'] = $idrow1['id'];
+
+		$_SESSION['loggedIn'] = True;
+
+		
+
+
 			//echo "done";
 
 
+	}
 
-			
+	else{
+
+		$sqlid = "SELECT * FROM `$tbl_name2` WHERE `access` =  '".$access_token. "'";
+
+		$idres=$db->query($sqlid);
+
+		$idrow = mysqli_fetch_array($idres);
+
+		$_SESSION['id'] = $idrow['id'];
+		$_SESSION['username']= $idrow['username'];
+		$_SESSION['loggedIn'] = True;
+
+	}
 
 
 		
+	
 	}
 
 
@@ -151,12 +190,9 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 //curl_close($ch);
-$_SESSION['id'] = $id;
 
-$_SESSION['name'] = $user;
-$_SESSION['avatar'] = $avatar;
-$_SESSION['email'] = $email;
-	$_SESSION['loggedIn'] = True;
+
+
 
 ?>
 
@@ -211,7 +247,7 @@ $_SESSION['email'] = $email;
 	</form>
 	<ul id="content"></ul>
 </div>
-
+<a href="index.php"><strong>Back to Main Page</strong> </a>
 <a href="create.php"><strong>Create New Topic</strong> </a>
 
 </body>

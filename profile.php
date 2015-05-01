@@ -97,7 +97,7 @@ if(isset($_POST['submit'])){
 
 	$row=mysqli_fetch_array($results);
 
-	$sqlpic ="SELECT picture FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
+	$sqlpic ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 
 	//echo $sqlpic;
 
@@ -107,6 +107,11 @@ if(isset($_POST['submit'])){
 	if($rpic['picture'] == "" ){
 		echo "<img width='30' height = '30' src='Pictures/default.png' alt='Default Profile Pic'>";
 
+	}
+	else if($rpic['gitpic'] != ""){
+		?>
+		 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
+		 <?php
 	}
 	else{
 		echo"<img width='30' height='30' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
@@ -145,6 +150,12 @@ while($r = mysqli_fetch_array($res)){
 		echo "<img width='100' height = '100' src='Pictures/default.png' alt='Default Profile Pic'>";
 
 	}
+else if($rpic['gitpic'] != ""){
+		?>
+		 <img width='50' height='50' src="<?php echo $r['gitpic']; ?>" alt="Avatar">
+		 <?php
+	}
+
 	else{
 		echo"<img width='100' height='100' src='Pictures/".$r['picture']."' alt=Profile Pic'>";
 	}
