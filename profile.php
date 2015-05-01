@@ -39,6 +39,7 @@ if(isset($_POST['submit'])== 'Upload'){
 		$defres=$db->query($dq);
 		//echo $defres;
 	$gq="UPDATE `$tbl_name2` SET gravatar = '$empty' WHERE username = '".$_SESSION['username']."'";
+	echo $gq;
 	$gres = $db->query($gq);
 	}
 	else{
