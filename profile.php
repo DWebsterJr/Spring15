@@ -30,7 +30,7 @@ $login = $_SESSION['username'];
 
 
 
-if(isset($_POST['submit'])== "Upload"){
+if(isset($_POST['upload'])){
 
 	if(empty($_FILES['file']['tmp_name'])){
 		//echo "no file";
@@ -42,7 +42,7 @@ if(isset($_POST['submit'])== "Upload"){
 		$defres=$db->query($dq);
 		//echo $defres;
 	$gq="UPDATE `$tbl_name2` SET gravatar = '$empty' WHERE username = '".$_SESSION['username']."'";
-	echo $gq;
+	//echo $gq;
 	$gres = $db->query($gq);
 	}
 	else{
@@ -56,7 +56,7 @@ if(isset($_POST['submit'])== "Upload"){
         }
     }
 
-   else if(isset($_POST['submit']) == "Grav"){
+   else if(isset($_POST['grav'])){
 
     	echo "Grav";
 
@@ -70,7 +70,7 @@ if(isset($_POST['submit'])== "Upload"){
 
     	echo $gresult;
     }
-   else if(isset($_POST['submit']) == "Gravatar"){
+   else if(isset($_POST['gravatar'])){
 
     	echo "Gravatar";
 
@@ -226,7 +226,7 @@ if( $roname['username'] == $_SESSION['username']){
 <div class="table">
 <form action = "" method="post" enctype="multipart/form-data">
 	<input type = "file" name="file">
-	<input type="submit" id="submit" name="submit" value="Upload">
+	<input type="submit" id="submit" name="upload" value="Upload">
 	
 
 
@@ -254,7 +254,7 @@ $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 		?>
 		
 			<input type = "text" name="file" id="file" value="<?php echo $newavatar?>">
-			<input type="submit" name="Gravatar" id="submit" value="Gravatar">
+			<input type="submit" name="gravatar" id="submit" value="Gravatar">
 		<img width='50' height='50' src="<?php echo $newavatar; ?>" alt="GrAvatar">
 	
 		<?php
@@ -265,7 +265,7 @@ $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 			//echo "<img width='50' height = '50' src='http://www.gravatar.com/avatar/00000000000000000000000000000000' alt='Default Profile Pic'>";
 ?>
 			<input type="text" name="gra" id="gra" value="http://www.gravatar.com/avatar/00000000000000000000000000000000">
-			<input type="submit" name="submit" id="submit" value="Grav">
+			<input type="submit" name="grav" id="submit" value="Grav">
 
 		</form>
   
