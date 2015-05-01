@@ -95,7 +95,7 @@ document.getElementById("signinWithGithub").onclick = function(){
 <input name="confirm" type="password" id="confirm">
 &nbsp;
 &nbsp;
-<input type="submit" name="Submit" value="Submit">
+<input type="submit" name="Submit" value="Register">
 
 </form>
 </div>

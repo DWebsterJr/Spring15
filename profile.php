@@ -52,11 +52,15 @@ if(isset($_POST['submit'])== 'Submit'){
 
     	echo "GrAvatar";
 
-    	echo $_POST['gra'];
+    	//echo $_POST['gra'];
 
     	$gravatar = "UPDATE `$tbl_name2` SET gravatar = '".$_POST['gra']."' WHERE username = '".$_SESSION['username']."'";
 
-    	echo $gravatar;
+    	//echo $gravatar;
+
+    	$gresult=$db->query($gravatar);
+
+    	echo $gresult;
     }
 
 
@@ -126,6 +130,13 @@ if(isset($_POST['submit'])== 'Submit'){
 			?>
 
 			 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
+			<?php
+		}
+
+		else if($rpic['gravatar'] != ""){
+			?>
+
+			 <img width='50' height='50' src="<?php echo $rpic['gravatar']; ?>" alt="Avatar">
 			<?php
 		}
 
