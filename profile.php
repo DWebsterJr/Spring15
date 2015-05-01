@@ -27,7 +27,7 @@ $roname=mysqli_fetch_array($rname);
 
 $login = $_SESSION['username'];
 
-if(isset($_POST['submit'])== 'Submit'){
+if(isset($_POST['submit'])== 'Upload'){
 
 	if(empty($_FILES['file']['tmp_name'])){
 		//echo "no file";
@@ -48,9 +48,9 @@ if(isset($_POST['submit'])== 'Submit'){
         }
     }
 
-    if(isset($_POST['submit']) == 'Gravatar'){
+    if(isset($_POST['submit']) == 'Grav'){
 
-    	echo "GrAvatar";
+    	echo "Grav";
 
     	//echo $_POST['gra'];
 
@@ -61,6 +61,12 @@ if(isset($_POST['submit'])== 'Submit'){
     	$gresult=$db->query($gravatar);
 
     	echo $gresult;
+    }
+    if(isset($_POST['submit']) == 'Gravatar'){
+
+    	echo "Gravatar";
+
+    	echo $_POST['file'];
     }
 
 
@@ -233,28 +239,26 @@ $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 
 		$newavatar = " http://www.gravatar.com/avatar/" ;
 
-		$newavatar .= $Hash;
+		$newavatar =  $newavatar . ' ' .$Hash;
 
 		?>
 		
-			<input type = "file" name="file" value="<?php echo $newavatar ?>">
-			<input type="submit" name="submit" value="Gravatar">
+			<input type = "text" name="file" id="file" value="<?php echo $newavatar?>">
+			<input type="submit" name="submit" id="submit"value="Gravatar">
 		<img width='50' height='50' src="<?php echo $newavatar; ?>" alt="GrAvatar">
 	
 		<?php
 
 	}
 
-	else{
+	
 			//echo "<img width='50' height = '50' src='http://www.gravatar.com/avatar/00000000000000000000000000000000' alt='Default Profile Pic'>";
 ?>
 			<input type="text" name="gra" id="gra" value="http://www.gravatar.com/avatar/00000000000000000000000000000000">
 			<input type="submit" name="submit" id="submit" value="Grav">
 
 		</form>
-<?php
-	}
-?>  
+  
 
 
 	<a href="create.php"><strong>Create New Topic</strong> </a>
