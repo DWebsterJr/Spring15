@@ -48,7 +48,7 @@ if(isset($_POST['submit'])== 'Upload'){
 	$ress=$db->query($nq);
 
 
-"
+
         }
     }
 
