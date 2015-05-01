@@ -58,7 +58,12 @@ $token = "SELECT access FROM `$tbl_name2` WHERE `access` = '".$access. "'";
 
 			$res = $db->query($token);
 
-			echo $res;
+			//echo $res;
+
+			if($res == 0 ){
+
+				echo " not Found";
+			}
 		//print_r($json);
 	//echo $access;
 	//echo $scope;
