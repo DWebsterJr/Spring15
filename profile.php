@@ -104,18 +104,24 @@ if(isset($_POST['submit'])){
 	$respic = $db->query($sqlpic);
 	$rpic = mysqli_fetch_array($respic);
 
-	if($rpic['picture'] == "" ){
-		echo "<img width='30' height = '30' src='Pictures/default.png' alt='Default Profile Pic'>";
+	if($rpic['picture'] != ""){
+			//echo $rpic['picture'];
+			echo"<img width='50' height='50' src='Pictures/".$r['picture']."' alt=Profile Pic'>";
+			
+		}
+		else if($rpic['picture'] == "" && $r['gitpic'] != "")
+		{
+			//echo $rpic['gitpic'];
+			?>
 
-	}
-	else if($rpic['gitpic'] != ""){
-		?>
-		 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
-		 <?php
-	}
-	else{
-		echo"<img width='30' height='30' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
-	}
+			 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
+			<?php
+		}
+
+		else{
+			//echo "default";
+			echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
+		}
 ?>
 
 	
@@ -140,7 +146,8 @@ if($adrow['admin'] == 1){
 </div>
 
 
-<td> <h2><?php echo $roname['username']; ?> </h2>
+<h2><?php echo $roname['username']; ?> </h2>
+<h2>Score: <?php echo $roname['score'];?></h2>
 <?php
 $q = "SELECT * FROM `$tbl_name2` where `id` = $id ";
 

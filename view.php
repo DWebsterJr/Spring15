@@ -163,7 +163,7 @@ if($adrow['admin'] == 1){
 	
 
 	<strong>By :</strong> <a href="profile.php?id=<?php echo $rows['u_id']; ?>" ><?php echo $name; ?></a>
-
+	Score: <?php echo $rows['score']; ?>
 	<?php
 	
 	$sqlpicture = "SELECT * FROM `$tbl_name2` WHERE `id` =$number";
