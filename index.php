@@ -97,7 +97,19 @@ $row=mysqli_fetch_array($results);
 		$respic = $db->query($sqlpic);
 		$rpic = mysqli_fetch_array($respic);
 
-			if($rpic['picture'] == "" || $rpic['gitpic'] == "" ){
+		if($rpic['picture'] != ""){
+			echo $rpic['picture'];
+		}
+		else if($rpic['picture'] == "" && $rpic['gitpic'] != "")
+		{
+			echo $rpic['gitpic'];
+		}
+
+		else{
+			echo "default";
+		}
+
+			if($rpic['picture'] != "" ){
 				echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
 				}
 	
