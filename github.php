@@ -84,7 +84,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		//echo $njson;
 		//echo "done echoing";
 
-		print_r($njson);
+		//print_r($njson);
 
 
 		$id = $njson['id'];
@@ -110,7 +110,13 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		$valid = 1;
 			$sql="INSERT INTO `$tbl_name2` (`username`, `email`,`validate`, `access`, `gitpic`) VALUES ('$user', '$email', '$valid', '$access_token', '$avatar')";
 
+echo $valid;
+
+
 			$result=$db->query($sql);
+
+echo $result;
+
 
 
 			//$sql1="INSERT INTO `$tbl_name2` (`username`,`password`, `email`)VALUES('$newname', '$newpassword', '$email')";
