@@ -187,6 +187,11 @@ while($r = mysqli_fetch_array($res)){
 
 			 <img width='50' height='50' src="<?php echo $r['gitpic']; ?>" alt="Avatar">
 			<?php
+		}else if($r['gravatar'] != ""){
+			?>
+
+			 <img width='50' height='50' src="<?php echo $r['gravatar']; ?>" alt="Avatar">
+			<?php
 		}
 
 		else{
@@ -231,7 +236,7 @@ $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 		?>
 		
 			<input type = "file" name="file" value="<?php echo $newavatar ?>">
-			<input type="submit" name="new" value="New image">
+			<input type="submit" name="submit" value="Gravatar">
 		<img width='50' height='50' src="<?php echo $newavatar; ?>" alt="GrAvatar">
 	
 		<?php
@@ -239,7 +244,7 @@ $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 	}
 
 	else{
-			echo "<img width='50' height = '50' src='http://www.gravatar.com/avatar/00000000000000000000000000000000' alt='Default Profile Pic'>";
+			//echo "<img width='50' height = '50' src='http://www.gravatar.com/avatar/00000000000000000000000000000000' alt='Default Profile Pic'>";
 ?>
 			<input type="text" name="gra" id="gra" value="http://www.gravatar.com/avatar/00000000000000000000000000000000">
 			<input type="submit" name="submit" id="submit" value="Grav">
