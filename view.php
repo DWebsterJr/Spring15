@@ -279,7 +279,7 @@ $a_name="Anon";
 
 			 <img width='50' height='50' src="<?php echo $picrow['gitpic']; ?>" alt="Avatar">
 			<?php
-		}else if($rpic['gravatar'] != ""){
+		}else if($picrow['gravatar'] != ""){
 			?>
 
 			 <img width='50' height='50' src="<?php echo $picrow['gravatar']; ?>" alt="Avatar">

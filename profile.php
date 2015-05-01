@@ -206,6 +206,8 @@ echo "<br>";
 <?php
 
 if( $roname['username'] == $_SESSION['username']){
+
+	if($roname['validate'] == 1){
 ?>
 <div class="table">
 <form action = "" method="post" enctype="multipart/form-data">
@@ -263,6 +265,7 @@ $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 
 
 
+}
 }
 ?>
 
