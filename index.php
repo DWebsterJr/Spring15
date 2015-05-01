@@ -100,7 +100,7 @@ $row=mysqli_fetch_array($results);
 		if($rpic['picture'] != ""){
 			//echo $rpic['picture'];
 
-			echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
+			echo"<img width='50' height='50' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
 		}
 		else if($rpic['picture'] == "" && $rpic['gitpic'] != "")
 		{
@@ -113,7 +113,7 @@ $row=mysqli_fetch_array($results);
 
 		else{
 			//echo "default";
-			echo"<img width='50' height='50' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
+			echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
 		}
 
 			?>

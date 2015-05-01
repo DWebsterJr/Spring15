@@ -165,7 +165,7 @@ while($r = mysqli_fetch_array($res)){
 			echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
 		}
 
-			?>
+			
 }
 echo "<br>";
 ?>
