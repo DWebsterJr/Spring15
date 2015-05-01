@@ -27,7 +27,7 @@ $roname=mysqli_fetch_array($rname);
 
 $login = $_SESSION['username'];
 
-if(isset($_POST['submit'])){
+if(isset($_POST['submit'])== 'Submit'){
 
 	if(empty($_FILES['file']['tmp_name'])){
 		//echo "no file";
@@ -46,6 +46,13 @@ if(isset($_POST['submit'])){
 
 	$ress=$db->query($nq);
         }
+    }
+
+    if(isset($_POST['submit']) == 'Gravatar'){
+
+    	echo "GrAvatar";
+
+    	echo $_POST['gra'];
     }
 
 
@@ -218,6 +225,12 @@ $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 
 	else{
 			echo "<img width='50' height = '50' src='http://www.gravatar.com/avatar/00000000000000000000000000000000' alt='Default Profile Pic'>";
+?>
+			<input type="text" name="avatar" id="gra" value="http://www.gravatar.com/avatar/00000000000000000000000000000000">
+			<input type="submit" name="submit" id="submit" value="Grav">
+
+		</form>
+<?php
 	}
 ?>  
 
