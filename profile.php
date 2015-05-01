@@ -48,11 +48,15 @@ if(isset($_POST['submit'])== 'Submit'){
         }
     }
 
-    else if(isset($_POST['submit']) == 'Gravatar'){
+    if(isset($_POST['submit']) == 'Gravatar'){
 
     	echo "GrAvatar";
 
     	echo $_POST['gra'];
+
+    	$gravatar = "UPDATE `$tbl_name2` SET gravatar = '".$_POST['gra']."' WHERE username = '".$_SESSION['username']."'";
+
+    	echo $gravatar;
     }
 
 
