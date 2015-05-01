@@ -193,7 +193,7 @@ if( $roname['username'] == $_SESSION['username']){
 	<input type="submit" id="submit" name="submit" value="Upload">
 	
 
-</form>
+
 <?php
 
 $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
@@ -214,7 +214,7 @@ $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 		$newavatar .= $Hash;
 
 		?>
-		<form action="" method="post" name="new_image" >
+		
 			<input type = "file" name="file" value="<?php echo $newavatar ?>">
 			<input type="submit" name="new" value="New image">
 		<img width='50' height='50' src="<?php echo $newavatar; ?>" alt="GrAvatar">
