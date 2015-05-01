@@ -51,8 +51,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 	curl_close($ch);
 
 
-	
-$token = "SELECT access FROM `$tbl_name2` WHERE `access` = '".$access_token. "'";
+
+$token = "SELECT access FROM `$tbl_name2` WHERE `access` = '".$access. "'";
 
 			echo $token;
 
@@ -139,7 +139,7 @@ echo $result;
 			
 			curl_close($ch2);
 
-	$sqlid1 = "SELECT * FROM `$tbl_name2` WHERE `access` =  '".$access_token. "'";
+	$sqlid1 = "SELECT * FROM `$tbl_name2` WHERE `access` =  '".$access. "'";
 
 		$idres1=$db->query($sqlid1);
 
