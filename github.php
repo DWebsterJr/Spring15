@@ -60,12 +60,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 		//echo curl_error($ch);
 
-	$acessto="SELECT access FROM `$tbl_name2` WHERE `access` =  '".$access_token. "'";
-
-	$resultto = $db->query($acessto);
-
-	if($resultto == 0){
-
+	
 		$ch2 = curl_init();
 			curl_setopt($ch2, CURLOPT_URL, "https://api.github.com/user?access_token=".$access);
 			/*curl_setopt($ch, CURLOPT_POST, 1);
@@ -117,6 +112,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 			$result=$db->query($sql);
 
+
 			//$sql1="INSERT INTO `$tbl_name2` (`username`,`password`, `email`)VALUES('$newname', '$newpassword', '$email')";
 
 			echo curl_error($ch2);
@@ -137,25 +133,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 
 			//echo "done";
-
-
-	}
-
-	else{
-
-		$sqlid = "SELECT * FROM `$tbl_name2` WHERE `access` =  '".$access_token. "'";
-
-		$idres=$db->query($sqlid);
-
-		$idrow = mysqli_fetch_array($idres);
-
-		$_SESSION['id'] = $idrow['id'];
-		$_SESSION['username']= $idrow['username'];
-		$_SESSION['loggedIn'] = True;
-
-	}
-
-
+	
 		
 	
 	}
