@@ -169,7 +169,7 @@ echo $result;
 
 	$row = mysqli_fetch_array($respic){
 
-		if($row['gitpic'] == ''){
+		if($row['gitpic'] == ""){
 			echo "empty";
 		}
 
@@ -177,6 +177,8 @@ echo $result;
 			echo $row['gitpic'];
 		}
 	}
+
+
 	}
 
 
