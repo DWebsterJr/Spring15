@@ -146,19 +146,26 @@ $q = "SELECT * FROM `$tbl_name2` where `id` = $id ";
 
 $res = $db->query($q);
 while($r = mysqli_fetch_array($res)){
-	if($r['picture'] == "" ){
-		echo "<img width='100' height = '100' src='Pictures/default.png' alt='Default Profile Pic'>";
+	if($r['picture'] != ""){
+			//echo $rpic['picture'];
+			echo"<img width='50' height='50' src='Pictures/".$r['picture']."' alt=Profile Pic'>";
+			
+		}
+		else if($r['picture'] == "" && $r['gitpic'] != "")
+		{
+			//echo $rpic['gitpic'];
+			?>
 
-	}
-else if($rpic['gitpic'] != ""){
-		?>
-		 <img width='50' height='50' src="<?php echo $r['gitpic']; ?>" alt="Avatar">
-		 <?php
-	}
+			 <img width='50' height='50' src="<?php echo $r['gitpic']; ?>" alt="Avatar">
+			<?php
+		}
 
-	else{
-		echo"<img width='100' height='100' src='Pictures/".$r['picture']."' alt=Profile Pic'>";
-	}
+		else{
+			//echo "default";
+			echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
+		}
+
+			?>
 }
 echo "<br>";
 ?>

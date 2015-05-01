@@ -47,18 +47,26 @@ $uname = $_SESSION['username'];
 	$respic = $db->query($sqlpic);
 	$rpic = mysqli_fetch_array($respic);
 
-	if($rpic['picture'] == "" ){
-		echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
+	if($rpic['picture'] != ""){
+			//echo $rpic['picture'];
 
-	}
-	else if($rpic['gitpic'] != ""){
-		?>
-		 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
-		 <?php
-	}
-	else{
-		echo"<img width='50' height='50' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
-	}
+			echo"<img width='50' height='50' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
+		}
+		else if($rpic['picture'] == "" && $rpic['gitpic'] != "")
+		{
+			//echo $rpic['gitpic'];
+			?>
+
+			 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
+			<?php
+		}
+
+		else{
+			//echo "default";
+			echo "<img width='50' height = '50' src='Pictures/default.png' alt='Default Profile Pic'>";
+		}
+
+			?>
 ?>  
 <div class = "user">
 	 <strong>Welcome, </strong>
