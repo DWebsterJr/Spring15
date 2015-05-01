@@ -158,12 +158,15 @@ if($adrow['admin'] == 1){
 
 						//echo $name;
 
+					$scor="SELECT score FROM `$tbl_name2` WHERE `username` = '".$name. "'";
+					$r = $db->query($scor);
 
+					$rscr = mysqli_fetch_array($r);
 			?>
 	
 
 	<strong>By :</strong> <a href="profile.php?id=<?php echo $rows['u_id']; ?>" ><?php echo $name; ?></a>
-	Score: <?php echo $rows['score']; ?>
+	Score: <?php echo $rscr['score']; ?>
 	<?php
 	
 	$sqlpicture = "SELECT * FROM `$tbl_name2` WHERE `id` =$number";

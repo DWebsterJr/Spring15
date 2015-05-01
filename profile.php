@@ -106,10 +106,10 @@ if(isset($_POST['submit'])){
 
 	if($rpic['picture'] != ""){
 			//echo $rpic['picture'];
-			echo"<img width='50' height='50' src='Pictures/".$r['picture']."' alt=Profile Pic'>";
+			echo"<img width='50' height='50' src='Pictures/".$rpic['picture']."' alt=Profile Pic'>";
 			
 		}
-		else if($rpic['picture'] == "" && $r['gitpic'] != "")
+		else if($rpic['picture'] == "" && $rpic['gitpic'] != "")
 		{
 			//echo $rpic['gitpic'];
 			?>
