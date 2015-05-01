@@ -79,6 +79,11 @@ $login = $_SESSION['username'];
 
 			 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
 			<?php
+		}else if($rpic['gravatar'] != ""){
+			?>
+
+			 <img width='50' height='50' src="<?php echo $rpic['gravatar']; ?>" alt="Avatar">
+			<?php
 		}
 
 		else{
@@ -188,6 +193,11 @@ if($adrow['admin'] == 1){
 
 			 <img width='50' height='50' src="<?php echo $picrow['gitpic']; ?>" alt="Avatar">
 			<?php
+		}else if($rpic['gravatar'] != ""){
+			?>
+
+			 <img width='50' height='50' src="<?php echo $picrow['gravatar']; ?>" alt="Avatar">
+			<?php
 		}
 
 		else{
@@ -268,6 +278,11 @@ $a_name="Anon";
 			?>
 
 			 <img width='50' height='50' src="<?php echo $picrow['gitpic']; ?>" alt="Avatar">
+			<?php
+		}else if($rpic['gravatar'] != ""){
+			?>
+
+			 <img width='50' height='50' src="<?php echo $picrow['gravatar']; ?>" alt="Avatar">
 			<?php
 		}
 

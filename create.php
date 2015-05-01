@@ -59,6 +59,11 @@ $uname = $_SESSION['username'];
 
 			 <img width='50' height='50' src="<?php echo $rpic['gitpic']; ?>" alt="Avatar">
 			<?php
+		}else if($rpic['gravatar'] != ""){
+			?>
+
+			 <img width='50' height='50' src="<?php echo $rpic['gravatar']; ?>" alt="Avatar">
+			<?php
 		}
 
 		else{
