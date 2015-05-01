@@ -27,14 +27,10 @@ $roname=mysqli_fetch_array($rname);
 
 $login = $_SESSION['username'];
 
-if(isset($_POST['action'])){
-
-		echo $_POST['submit'];
-	}
 
 
 
-if(isset($_POST['submit'])== 'Upload'){
+if(isset($_POST['submit'])== "Upload"){
 
 	if(empty($_FILES['file']['tmp_name'])){
 		//echo "no file";
@@ -60,7 +56,7 @@ if(isset($_POST['submit'])== 'Upload'){
         }
     }
 
-   else if(isset($_POST['submit']) == 'Grav'){
+   else if(isset($_POST['submit']) == "Grav"){
 
     	echo "Grav";
 
@@ -74,7 +70,7 @@ if(isset($_POST['submit'])== 'Upload'){
 
     	echo $gresult;
     }
-   else if(isset($_POST['submit']) == 'Gravatar'){
+   else if(isset($_POST['submit']) == "Gravatar"){
 
     	echo "Gravatar";
 
@@ -258,7 +254,7 @@ $mail ="SELECT * FROM `$tbl_name2` WHERE `username` = '".$uname. "'";
 		?>
 		
 			<input type = "text" name="file" id="file" value="<?php echo $newavatar?>">
-			<input type="submit" name="submit" id="submit" value="Gravatar">
+			<input type="submit" name="Gravatar" id="submit" value="Gravatar">
 		<img width='50' height='50' src="<?php echo $newavatar; ?>" alt="GrAvatar">
 	
 		<?php
