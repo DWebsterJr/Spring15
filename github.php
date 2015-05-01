@@ -61,6 +61,8 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 		//echo curl_error($ch);
 
 	
+
+	
 		$ch2 = curl_init();
 			curl_setopt($ch2, CURLOPT_URL, "https://api.github.com/user?access_token=".$access);
 			/*curl_setopt($ch, CURLOPT_POST, 1);
@@ -112,7 +114,7 @@ $clientSecrect ="70da2c35ff3a63ee2c04bc10a90083003ed9a7ea";
 
 echo $valid;
 
-
+echo $sql;
 			$result=$db->query($sql);
 
 echo $result;
